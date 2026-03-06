@@ -1,0 +1,267 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+<BaseLayout title="How It Works | InstantCompany.com" description="From raw idea to launch-ready business in four simple steps. See how InstantCompany's AI engine turns your concept into a complete business blueprint.">
+  <!-- Hero -->
+  <section class="relative w-full rounded-[2.5rem] overflow-hidden bg-[#0f1115] text-white p-8 lg:p-12 shadow-2xl shadow-gray-200">
+    <div class="absolute inset-0 z-0">
+      <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2560&auto=format&fit=crop" alt="Abstract technology" class="opacity-20 mix-blend-overlay w-full h-full object-cover" />
+      <div class="bg-gradient-to-t from-[#0f1115] via-transparent to-[#0f1115]/80 absolute inset-0"></div>
+    </div>
+    <Header />
+    <div class="relative z-10 mt-16 max-w-3xl pb-8">
+      <div class="inline-flex items-center rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-1 text-xs text-emerald-400 mb-6">
+        Process
+      </div>
+      <h1 class="text-4xl md:text-6xl text-white mb-4 font-manrope font-medium tracking-tighter">How It Works</h1>
+      <p class="text-lg text-gray-300 leading-relaxed max-w-2xl">From raw idea to launch-ready business in four simple steps. No consultants, no weeks of research — just results.</p>
+    </div>
+  </section>
+
+  <!-- Step 1 -->
+  <section class="py-20 border-b border-gray-200/60">
+    <div class="max-w-6xl mx-auto px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <div class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-emerald-50 border border-emerald-100 mb-6">
+            <span class="text-emerald-600 font-manrope font-semibold text-lg">1</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl text-gray-900 mb-6 font-manrope font-medium tracking-tighter">Input Your Idea</h2>
+          <p class="text-gray-500 leading-relaxed mb-6">
+            Describe what you want to build in plain English. It can be a rough concept, a half-formed thought, or a fully developed pitch. Our AI understands natural language and extracts the core business potential from whatever you give it.
+          </p>
+          <ul class="space-y-3">
+            <li class="flex items-center gap-3 text-sm text-gray-600">
+              <iconify-icon icon="solar:check-circle-linear" class="text-emerald-500 text-lg"></iconify-icon>
+              No templates or forms to fill out
+            </li>
+            <li class="flex items-center gap-3 text-sm text-gray-600">
+              <iconify-icon icon="solar:check-circle-linear" class="text-emerald-500 text-lg"></iconify-icon>
+              Works with vague ideas or detailed briefs
+            </li>
+            <li class="flex items-center gap-3 text-sm text-gray-600">
+              <iconify-icon icon="solar:check-circle-linear" class="text-emerald-500 text-lg"></iconify-icon>
+              Supports any industry or niche
+            </li>
+          </ul>
+        </div>
+        <div class="relative">
+          <div class="bg-white rounded-3xl shadow-xl border border-gray-100 p-8 transform">
+            <div class="flex gap-2 items-center mb-6">
+              <div class="w-3 h-3 rounded-full bg-red-400/30 border border-red-400/50"></div>
+              <div class="w-3 h-3 rounded-full bg-yellow-400/30 border border-yellow-400/50"></div>
+              <div class="w-3 h-3 rounded-full bg-emerald-400/30 border border-emerald-400/50"></div>
+            </div>
+            <div class="flex items-center gap-3 bg-gray-50 p-4 rounded-xl border border-gray-100">
+              <iconify-icon icon="solar:magic-stick-3-linear" class="text-emerald-500 text-xl"></iconify-icon>
+              <span class="text-gray-400 text-sm">I want to build a subscription box for pet owners...</span>
+              <div class="w-0.5 h-5 bg-emerald-500 animate-pulse ml-auto"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Step 2 -->
+  <section class="py-20 border-b border-gray-200/60 bg-white/50">
+    <div class="max-w-6xl mx-auto px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div class="order-2 lg:order-1 relative">
+          <div class="bg-[#0f1115] rounded-3xl shadow-xl p-8 text-white">
+            <div class="flex items-center gap-3 mb-6">
+              <div class="w-10 h-10 rounded-xl bg-emerald-400/20 flex items-center justify-center border border-emerald-400/30">
+                <iconify-icon icon="solar:cpu-linear" class="text-emerald-400 text-xl"></iconify-icon>
+              </div>
+              <div>
+                <p class="text-sm text-white">AI Synthesis Engine</p>
+                <p class="text-xs text-gray-500">Processing your concept...</p>
+              </div>
+              <div class="ml-auto w-3 h-3 bg-emerald-400 rounded-full animate-pulse"></div>
+            </div>
+            <div class="space-y-3">
+              <div class="flex items-center gap-3">
+                <iconify-icon icon="solar:check-circle-bold" class="text-emerald-400"></iconify-icon>
+                <span class="text-sm text-gray-300">Market analysis complete</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <iconify-icon icon="solar:check-circle-bold" class="text-emerald-400"></iconify-icon>
+                <span class="text-sm text-gray-300">Brand identity generated</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <iconify-icon icon="solar:check-circle-bold" class="text-emerald-400"></iconify-icon>
+                <span class="text-sm text-gray-300">Competitor landscape mapped</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="w-4 h-4 border-2 border-emerald-400 border-t-transparent rounded-full animate-spin"></div>
+                <span class="text-sm text-gray-400">Generating positioning...</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="order-1 lg:order-2">
+          <div class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-emerald-50 border border-emerald-100 mb-6">
+            <span class="text-emerald-600 font-manrope font-semibold text-lg">2</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl text-gray-900 mb-6 font-manrope font-medium tracking-tighter">AI Synthesis</h2>
+          <p class="text-gray-500 leading-relaxed mb-6">
+            Our engine analyzes thousands of successful businesses across your industry to generate a complete strategic foundation. In under 60 seconds, you get brand identities, market positioning, and competitive analysis that would take consultants weeks to deliver.
+          </p>
+          <ul class="space-y-3">
+            <li class="flex items-center gap-3 text-sm text-gray-600">
+              <iconify-icon icon="solar:check-circle-linear" class="text-emerald-500 text-lg"></iconify-icon>
+              Cross-references industry patterns
+            </li>
+            <li class="flex items-center gap-3 text-sm text-gray-600">
+              <iconify-icon icon="solar:check-circle-linear" class="text-emerald-500 text-lg"></iconify-icon>
+              Multiple brand name and identity options
+            </li>
+            <li class="flex items-center gap-3 text-sm text-gray-600">
+              <iconify-icon icon="solar:check-circle-linear" class="text-emerald-500 text-lg"></iconify-icon>
+              Real-time competitive landscape analysis
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Step 3 -->
+  <section class="py-20 border-b border-gray-200/60">
+    <div class="max-w-6xl mx-auto px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <div class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-emerald-50 border border-emerald-100 mb-6">
+            <span class="text-emerald-600 font-manrope font-semibold text-lg">3</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl text-gray-900 mb-6 font-manrope font-medium tracking-tighter">Launch Strategy</h2>
+          <p class="text-gray-500 leading-relaxed mb-6">
+            Receive a tailored pricing model based on industry benchmarks, high-conversion landing page copy, and a clear go-to-market framework. Every recommendation is calibrated to your specific market and target audience.
+          </p>
+          <ul class="space-y-3">
+            <li class="flex items-center gap-3 text-sm text-gray-600">
+              <iconify-icon icon="solar:check-circle-linear" class="text-emerald-500 text-lg"></iconify-icon>
+              Data-driven pricing recommendations
+            </li>
+            <li class="flex items-center gap-3 text-sm text-gray-600">
+              <iconify-icon icon="solar:check-circle-linear" class="text-emerald-500 text-lg"></iconify-icon>
+              Ready-to-use landing page copy
+            </li>
+            <li class="flex items-center gap-3 text-sm text-gray-600">
+              <iconify-icon icon="solar:check-circle-linear" class="text-emerald-500 text-lg"></iconify-icon>
+              Go-to-market playbook
+            </li>
+          </ul>
+        </div>
+        <div class="relative">
+          <div class="bg-white rounded-3xl shadow-xl border border-gray-100 p-8">
+            <div class="flex items-center gap-3 mb-6">
+              <div class="w-8 h-8 bg-emerald-50 rounded-lg flex items-center justify-center border border-emerald-100">
+                <iconify-icon icon="solar:tag-price-linear" class="text-emerald-600"></iconify-icon>
+              </div>
+              <div>
+                <p class="text-sm text-gray-900 font-medium">Pricing Model</p>
+                <p class="text-xs text-gray-400">Optimized for your market</p>
+              </div>
+            </div>
+            <div class="grid grid-cols-3 gap-3 mb-6">
+              <div class="bg-gray-50 rounded-xl p-3 text-center border border-gray-100">
+                <p class="text-xs text-gray-400 mb-1">Starter</p>
+                <p class="text-lg text-gray-900 font-manrope font-medium">$19</p>
+              </div>
+              <div class="bg-emerald-50 rounded-xl p-3 text-center border border-emerald-200">
+                <p class="text-xs text-emerald-600 mb-1">Popular</p>
+                <p class="text-lg text-emerald-700 font-manrope font-medium">$49</p>
+              </div>
+              <div class="bg-gray-50 rounded-xl p-3 text-center border border-gray-100">
+                <p class="text-xs text-gray-400 mb-1">Pro</p>
+                <p class="text-lg text-gray-900 font-manrope font-medium">$99</p>
+              </div>
+            </div>
+            <div class="space-y-2">
+              <div class="h-2 w-full bg-gray-100 rounded-full overflow-hidden">
+                <div class="h-full w-3/4 bg-emerald-400 rounded-full"></div>
+              </div>
+              <p class="text-xs text-gray-400">Conversion probability: 74%</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Step 4 -->
+  <section class="py-20">
+    <div class="max-w-6xl mx-auto px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div class="order-2 lg:order-1 relative">
+          <div class="bg-white rounded-3xl shadow-xl border border-gray-100 p-8">
+            <div class="flex justify-between items-start mb-6">
+              <div class="w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center border border-emerald-100">
+                <iconify-icon icon="solar:case-minimalistic-linear" class="text-emerald-600 text-xl"></iconify-icon>
+              </div>
+              <span class="bg-emerald-50 text-emerald-600 border border-emerald-200 text-xs uppercase font-bold tracking-wider px-3 py-1 rounded-full">Ready</span>
+            </div>
+            <h4 class="text-gray-900 font-medium mb-4">Your Business Blueprint</h4>
+            <div class="space-y-3">
+              <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-xl border border-gray-100">
+                <iconify-icon icon="solar:document-text-linear" class="text-emerald-500"></iconify-icon>
+                <span class="text-sm text-gray-600">Brand Identity Pack</span>
+                <iconify-icon icon="solar:download-minimalistic-linear" class="text-gray-400 ml-auto"></iconify-icon>
+              </div>
+              <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-xl border border-gray-100">
+                <iconify-icon icon="solar:presentation-graph-linear" class="text-emerald-500"></iconify-icon>
+                <span class="text-sm text-gray-600">Pitch Deck</span>
+                <iconify-icon icon="solar:download-minimalistic-linear" class="text-gray-400 ml-auto"></iconify-icon>
+              </div>
+              <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-xl border border-gray-100">
+                <iconify-icon icon="solar:global-linear" class="text-emerald-500"></iconify-icon>
+                <span class="text-sm text-gray-600">Landing Page Copy</span>
+                <iconify-icon icon="solar:download-minimalistic-linear" class="text-gray-400 ml-auto"></iconify-icon>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="order-1 lg:order-2">
+          <div class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-emerald-50 border border-emerald-100 mb-6">
+            <span class="text-emerald-600 font-manrope font-semibold text-lg">4</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl text-gray-900 mb-6 font-manrope font-medium tracking-tighter">Export & Execute</h2>
+          <p class="text-gray-500 leading-relaxed mb-6">
+            Download your complete business blueprint and start executing immediately. Everything is formatted and ready for real-world use — from investor decks to marketing copy to your first landing page.
+          </p>
+          <ul class="space-y-3">
+            <li class="flex items-center gap-3 text-sm text-gray-600">
+              <iconify-icon icon="solar:check-circle-linear" class="text-emerald-500 text-lg"></iconify-icon>
+              Export to PDF, slides, or raw text
+            </li>
+            <li class="flex items-center gap-3 text-sm text-gray-600">
+              <iconify-icon icon="solar:check-circle-linear" class="text-emerald-500 text-lg"></iconify-icon>
+              Investor-ready pitch deck format
+            </li>
+            <li class="flex items-center gap-3 text-sm text-gray-600">
+              <iconify-icon icon="solar:check-circle-linear" class="text-emerald-500 text-lg"></iconify-icon>
+              Copy-paste landing page sections
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="relative rounded-[2.5rem] overflow-hidden bg-[#0f1115] text-white p-8 lg:p-16 text-center">
+    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-emerald-600/15 rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="relative z-10 max-w-2xl mx-auto">
+      <h2 class="text-3xl md:text-5xl text-white mb-6 font-manrope font-medium tracking-tighter">Ready to build something?</h2>
+      <p class="text-gray-400 text-lg mb-10 leading-relaxed">Stop planning. Start generating. Your next company is 60 seconds away.</p>
+      <a href="/#generator" class="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-gradient-to-b from-emerald-500 to-emerald-700 text-white hover:brightness-110 transition-all shadow-[0_0_25px_rgba(16,185,129,0.2)] border border-emerald-400/20">
+        Try It Now <iconify-icon icon="solar:arrow-right-linear" class="text-lg"></iconify-icon>
+      </a>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>

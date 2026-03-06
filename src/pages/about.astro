@@ -1,0 +1,168 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+<BaseLayout title="About Us | InstantCompany.com" description="We're on a mission to democratize entrepreneurship. Learn how InstantCompany uses AI to help anyone turn a raw idea into a launch-ready business.">
+  <!-- Hero -->
+  <section class="relative w-full rounded-[2.5rem] overflow-hidden bg-[#0f1115] text-white p-8 lg:p-12 shadow-2xl shadow-gray-200">
+    <div class="absolute inset-0 z-0">
+      <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2560&auto=format&fit=crop" alt="Team collaboration" class="opacity-20 mix-blend-overlay w-full h-full object-cover" />
+      <div class="bg-gradient-to-t from-[#0f1115] via-transparent to-[#0f1115]/80 absolute inset-0"></div>
+    </div>
+    <Header />
+    <div class="relative z-10 mt-16 max-w-3xl pb-8">
+      <div class="inline-flex items-center rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-1 text-xs text-emerald-400 mb-6">
+        About
+      </div>
+      <h1 class="text-4xl md:text-6xl text-white mb-4 font-manrope font-medium tracking-tighter">We believe everyone deserves to build.</h1>
+      <p class="text-lg text-gray-300 leading-relaxed max-w-2xl">InstantCompany exists to remove the barriers between a great idea and a real business. We use AI to compress weeks of strategy into seconds.</p>
+    </div>
+  </section>
+
+  <!-- Mission -->
+  <section class="py-20 border-b border-gray-200/60">
+    <div class="max-w-6xl mx-auto px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <h2 class="text-3xl md:text-4xl text-gray-900 mb-6 font-manrope font-medium tracking-tighter">The problem we saw</h2>
+          <p class="text-gray-500 leading-relaxed mb-6">
+            Every year, millions of great ideas die in the planning phase. Founders spend weeks naming their company, months perfecting their positioning, and thousands on consultants who deliver 50-page decks nobody reads.
+          </p>
+          <p class="text-gray-500 leading-relaxed">
+            Meanwhile, the best founders — the ones with resources and connections — move fast. They hire branding agencies on day one, get strategic advice over lunch, and launch before anyone else finishes brainstorming. We decided to level that playing field.
+          </p>
+        </div>
+        <div class="relative">
+          <div class="bg-[#0f1115] rounded-3xl p-8 text-white">
+            <div class="grid grid-cols-2 gap-6">
+              <div class="text-center">
+                <p class="text-4xl text-emerald-400 font-manrope font-medium tracking-tighter mb-2">60s</p>
+                <p class="text-xs text-gray-500 uppercase tracking-wider">Avg. generation time</p>
+              </div>
+              <div class="text-center">
+                <p class="text-4xl text-emerald-400 font-manrope font-medium tracking-tighter mb-2">10k+</p>
+                <p class="text-xs text-gray-500 uppercase tracking-wider">Founders served</p>
+              </div>
+              <div class="text-center">
+                <p class="text-4xl text-emerald-400 font-manrope font-medium tracking-tighter mb-2">50+</p>
+                <p class="text-xs text-gray-500 uppercase tracking-wider">Industries covered</p>
+              </div>
+              <div class="text-center">
+                <p class="text-4xl text-emerald-400 font-manrope font-medium tracking-tighter mb-2">$0</p>
+                <p class="text-xs text-gray-500 uppercase tracking-wider">To get started</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How we solve it -->
+  <section class="py-20 border-b border-gray-200/60 bg-white/50">
+    <div class="max-w-6xl mx-auto px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-3xl md:text-4xl text-gray-900 mb-6 font-manrope font-medium tracking-tighter">What InstantCompany does</h2>
+        <p class="text-gray-500 leading-relaxed text-lg">
+          We built an AI engine that does what expensive consultants do — but in under a minute, and for free.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm">
+          <div class="w-12 h-12 rounded-2xl bg-emerald-50 border border-emerald-100 flex items-center justify-center mb-6">
+            <iconify-icon icon="solar:pallete-2-linear" class="text-emerald-600 text-xl"></iconify-icon>
+          </div>
+          <h3 class="text-lg text-gray-900 mb-3 font-manrope font-medium tracking-tight">Brand Generation</h3>
+          <p class="text-sm text-gray-500 leading-relaxed">
+            Company names, taglines, visual identity direction, and domain availability — generated in seconds from your concept.
+          </p>
+        </div>
+        <div class="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm">
+          <div class="w-12 h-12 rounded-2xl bg-emerald-50 border border-emerald-100 flex items-center justify-center mb-6">
+            <iconify-icon icon="solar:target-linear" class="text-emerald-600 text-xl"></iconify-icon>
+          </div>
+          <h3 class="text-lg text-gray-900 mb-3 font-manrope font-medium tracking-tight">Strategic Positioning</h3>
+          <p class="text-sm text-gray-500 leading-relaxed">
+            Market positioning, unique value propositions, and competitive differentiation tailored to your specific niche.
+          </p>
+        </div>
+        <div class="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm">
+          <div class="w-12 h-12 rounded-2xl bg-emerald-50 border border-emerald-100 flex items-center justify-center mb-6">
+            <iconify-icon icon="solar:rocket-2-linear" class="text-emerald-600 text-xl"></iconify-icon>
+          </div>
+          <h3 class="text-lg text-gray-900 mb-3 font-manrope font-medium tracking-tight">Launch Assets</h3>
+          <p class="text-sm text-gray-500 leading-relaxed">
+            Pricing models, landing page copy, pitch deck frameworks, and go-to-market plans you can use immediately.
+          </p>
+        </div>
+      </div>
+      <div class="text-center mt-12">
+        <a href="/how-it-works" class="inline-flex items-center gap-2 text-sm text-emerald-600 hover:text-emerald-700 transition-colors border-b border-emerald-600 pb-0.5">
+          See how it works in detail <iconify-icon icon="solar:arrow-right-linear" class="text-base"></iconify-icon>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="py-20">
+    <div class="max-w-6xl mx-auto px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-3xl md:text-4xl text-gray-900 mb-6 font-manrope font-medium tracking-tighter">What drives us</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div class="flex gap-4">
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center flex-shrink-0 mt-1">
+            <iconify-icon icon="solar:bolt-linear" class="text-emerald-600"></iconify-icon>
+          </div>
+          <div>
+            <h3 class="text-gray-900 font-medium mb-2">Speed over perfection</h3>
+            <p class="text-sm text-gray-500 leading-relaxed">A good strategy today beats a perfect strategy next month. We help founders move fast and iterate.</p>
+          </div>
+        </div>
+        <div class="flex gap-4">
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center flex-shrink-0 mt-1">
+            <iconify-icon icon="solar:lock-unlocked-linear" class="text-emerald-600"></iconify-icon>
+          </div>
+          <div>
+            <h3 class="text-gray-900 font-medium mb-2">Access for everyone</h3>
+            <p class="text-sm text-gray-500 leading-relaxed">The tools that used to cost thousands should be available to every aspiring founder, everywhere.</p>
+          </div>
+        </div>
+        <div class="flex gap-4">
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center flex-shrink-0 mt-1">
+            <iconify-icon icon="solar:atom-linear" class="text-emerald-600"></iconify-icon>
+          </div>
+          <div>
+            <h3 class="text-gray-900 font-medium mb-2">AI as a co-founder</h3>
+            <p class="text-sm text-gray-500 leading-relaxed">We don't replace human creativity — we amplify it. AI handles the heavy lifting so you can focus on vision.</p>
+          </div>
+        </div>
+        <div class="flex gap-4">
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center flex-shrink-0 mt-1">
+            <iconify-icon icon="solar:graph-new-linear" class="text-emerald-600"></iconify-icon>
+          </div>
+          <div>
+            <h3 class="text-gray-900 font-medium mb-2">Data-informed decisions</h3>
+            <p class="text-sm text-gray-500 leading-relaxed">Every recommendation is backed by analysis of real market patterns, not gut feelings.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="relative rounded-[2.5rem] overflow-hidden bg-[#0f1115] text-white p-8 lg:p-16 text-center">
+    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-emerald-600/15 rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="relative z-10 max-w-2xl mx-auto">
+      <h2 class="text-3xl md:text-5xl text-white mb-6 font-manrope font-medium tracking-tighter">Ready to build your company?</h2>
+      <p class="text-gray-400 text-lg mb-10 leading-relaxed">Join thousands of founders who went from idea to blueprint in under a minute.</p>
+      <a href="/#generator" class="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-gradient-to-b from-emerald-500 to-emerald-700 text-white hover:brightness-110 transition-all shadow-[0_0_25px_rgba(16,185,129,0.2)] border border-emerald-400/20">
+        Start Generating <iconify-icon icon="solar:arrow-right-linear" class="text-lg"></iconify-icon>
+      </a>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>

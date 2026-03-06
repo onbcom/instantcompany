@@ -1,0 +1,113 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+<BaseLayout title="Contact | InstantCompany.com" description="Get in touch with the InstantCompany team. We'd love to hear from you — whether it's feedback, partnership inquiries, or support.">
+  <!-- Hero -->
+  <section class="relative w-full rounded-[2.5rem] overflow-hidden bg-[#0f1115] text-white p-8 lg:p-12 shadow-2xl shadow-gray-200">
+    <div class="absolute inset-0 z-0">
+      <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2560&auto=format&fit=crop" alt="Communication" class="opacity-20 mix-blend-overlay w-full h-full object-cover" />
+      <div class="bg-gradient-to-t from-[#0f1115] via-transparent to-[#0f1115]/80 absolute inset-0"></div>
+    </div>
+    <Header />
+    <div class="relative z-10 mt-16 max-w-3xl pb-8">
+      <div class="inline-flex items-center rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-1 text-xs text-emerald-400 mb-6">
+        Contact
+      </div>
+      <h1 class="text-4xl md:text-6xl text-white mb-4 font-manrope font-medium tracking-tighter">Get in touch</h1>
+      <p class="text-lg text-gray-300 leading-relaxed max-w-2xl">Have a question, feedback, or partnership idea? We'd love to hear from you.</p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="py-20">
+    <div class="max-w-6xl mx-auto px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-16">
+        <!-- Contact Form -->
+        <div class="lg:col-span-3">
+          <h2 class="text-2xl text-gray-900 mb-8 font-manrope font-medium tracking-tighter">Send us a message</h2>
+          <form class="space-y-6" action="#" method="post">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div>
+                <label for="name" class="block text-sm text-gray-600 mb-2">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="Jane Doe" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-400 transition-all" />
+              </div>
+              <div>
+                <label for="email" class="block text-sm text-gray-600 mb-2">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="jane@company.com" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-400 transition-all" />
+              </div>
+            </div>
+            <div>
+              <label for="subject" class="block text-sm text-gray-600 mb-2">Subject</label>
+              <select id="subject" name="subject" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-400 transition-all">
+                <option value="">Select a topic...</option>
+                <option value="general">General Inquiry</option>
+                <option value="support">Technical Support</option>
+                <option value="partnership">Partnership Opportunity</option>
+                <option value="feedback">Product Feedback</option>
+                <option value="press">Press & Media</option>
+              </select>
+            </div>
+            <div>
+              <label for="message" class="block text-sm text-gray-600 mb-2">Message</label>
+              <textarea id="message" name="message" rows="5" placeholder="Tell us what's on your mind..." class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-400 transition-all resize-none"></textarea>
+            </div>
+            <button type="submit" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#0f1115] text-white text-sm hover:bg-gray-800 transition-colors">
+              Send Message <iconify-icon icon="solar:arrow-right-linear" class="text-base"></iconify-icon>
+            </button>
+          </form>
+        </div>
+
+        <!-- Contact Info Sidebar -->
+        <div class="lg:col-span-2">
+          <h2 class="text-2xl text-gray-900 mb-8 font-manrope font-medium tracking-tighter">Other ways to reach us</h2>
+          <div class="space-y-8">
+            <div class="flex gap-4">
+              <div class="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center flex-shrink-0">
+                <iconify-icon icon="solar:letter-linear" class="text-emerald-600"></iconify-icon>
+              </div>
+              <div>
+                <p class="text-sm text-gray-900 font-medium mb-1">Email</p>
+                <a href="mailto:hello@instantcompany.com" class="text-sm text-emerald-600 hover:text-emerald-700 transition-colors">hello@instantcompany.com</a>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center flex-shrink-0">
+                <iconify-icon icon="solar:chat-round-line-linear" class="text-emerald-600"></iconify-icon>
+              </div>
+              <div>
+                <p class="text-sm text-gray-900 font-medium mb-1">Support</p>
+                <p class="text-sm text-gray-500">Typically respond within 24 hours</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center flex-shrink-0">
+                <iconify-icon icon="solar:share-circle-linear" class="text-emerald-600"></iconify-icon>
+              </div>
+              <div>
+                <p class="text-sm text-gray-900 font-medium mb-1">Social</p>
+                <div class="flex gap-3 mt-1">
+                  <a href="#" class="text-gray-400 hover:text-emerald-500 transition-colors"><iconify-icon icon="mdi:twitter" class="text-lg"></iconify-icon></a>
+                  <a href="#" class="text-gray-400 hover:text-emerald-500 transition-colors"><iconify-icon icon="mdi:linkedin" class="text-lg"></iconify-icon></a>
+                  <a href="#" class="text-gray-400 hover:text-emerald-500 transition-colors"><iconify-icon icon="mdi:instagram" class="text-lg"></iconify-icon></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ CTA -->
+          <div class="mt-12 p-6 bg-gray-50 rounded-2xl border border-gray-100">
+            <h3 class="text-gray-900 font-medium mb-2">Looking for answers?</h3>
+            <p class="text-sm text-gray-500 mb-4 leading-relaxed">Check our blog for guides, tips, and founder advice.</p>
+            <a href="/blog" class="inline-flex items-center gap-2 text-sm text-emerald-600 hover:text-emerald-700 transition-colors">
+              Visit the Blog <iconify-icon icon="solar:arrow-right-linear" class="text-base"></iconify-icon>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>
