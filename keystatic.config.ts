@@ -16,6 +16,7 @@ export default config({
         publishDate: fields.date({ label: 'Publish Date' }),
         author: fields.text({ label: 'Author' }),
         excerpt: fields.text({ label: 'Excerpt', multiline: true }),
+        featuredImage: fields.text({ label: 'Featured Image URL' }),
         content: fields.markdoc({ label: 'Content' }),
       },
     }),

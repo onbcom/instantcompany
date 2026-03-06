@@ -31,7 +31,7 @@ function formatDate(dateStr: string | null) {
 <BaseLayout title={`${entry.title} | InstantCompany Blog`} description={entry.excerpt || ''}>
   <section class="relative w-full rounded-[2.5rem] overflow-hidden bg-[#0f1115] text-white p-8 lg:p-12 shadow-2xl shadow-gray-200">
     <div class="absolute inset-0 z-0">
-      <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=2560&auto=format&fit=crop" alt="Writing workspace" class="opacity-20 mix-blend-overlay w-full h-full object-cover" />
+      <img src={entry.featuredImage || 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=2560&auto=format&fit=crop'} alt={entry.title} class="opacity-20 mix-blend-overlay w-full h-full object-cover" />
       <div class="bg-gradient-to-t from-[#0f1115] via-transparent to-[#0f1115]/80 absolute inset-0"></div>
     </div>
     <Header />

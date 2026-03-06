@@ -15,6 +15,8 @@ const sortedPosts = posts.sort((a, b) => {
   return dateB - dateA;
 });
 
+const fallbackImage = 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=1200&auto=format&fit=crop';
+
 // Fallback sample posts if none exist in CMS yet
 const displayPosts = sortedPosts.length > 0 ? sortedPosts : [
   {
@@ -25,6 +27,7 @@ const displayPosts = sortedPosts.length > 0 ? sortedPosts : [
       publishDate: '2026-03-01',
       author: 'InstantCompany Team',
       excerpt: 'The barrier to launching a business has never been lower. AI tools are compressing weeks of strategy work into minutes — and it\'s changing who gets to be a founder.',
+      featuredImage: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1200&auto=format&fit=crop',
     }
   },
   {
@@ -35,6 +38,7 @@ const displayPosts = sortedPosts.length > 0 ? sortedPosts : [
       publishDate: '2026-02-20',
       author: 'InstantCompany Team',
       excerpt: 'From underpricing to skipping positioning work, these common pitfalls derail new businesses before they even get off the ground.',
+      featuredImage: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1200&auto=format&fit=crop',
     }
   },
   {
@@ -45,6 +49,62 @@ const displayPosts = sortedPosts.length > 0 ? sortedPosts : [
       publishDate: '2026-02-10',
       author: 'InstantCompany Team',
       excerpt: 'Validation doesn\'t have to take months. Here\'s a modern framework for testing your business concept before you invest serious time or money.',
+      featuredImage: 'https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1200&auto=format&fit=crop',
+    }
+  },
+  {
+    slug: 'the-solopreneur-stack-tools-you-need-to-launch-alone',
+    entry: {
+      title: 'The Solopreneur Stack: Tools You Need to Launch Alone',
+      category: 'Getting Started',
+      publishDate: '2026-02-01',
+      author: 'InstantCompany Team',
+      excerpt: 'You don\'t need a co-founder or a team to launch a real business. Here\'s the essential tool stack that lets solo founders compete with funded startups.',
+      featuredImage: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop',
+    }
+  },
+  {
+    slug: 'from-idea-to-revenue-the-30-day-launch-framework',
+    entry: {
+      title: 'From Idea to Revenue: The 30-Day Launch Framework',
+      category: 'Growth Strategies',
+      publishDate: '2026-01-25',
+      author: 'InstantCompany Team',
+      excerpt: 'Most businesses stall in the planning phase. This week-by-week framework gets you from concept to first revenue in 30 days — no excuses.',
+      featuredImage: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1200&auto=format&fit=crop',
+    }
+  },
+  {
+    slug: 'why-positioning-is-the-most-underrated-startup-skill',
+    entry: {
+      title: 'Why Positioning Is the Most Underrated Startup Skill',
+      category: 'Founder Advice',
+      publishDate: '2026-01-15',
+      author: 'InstantCompany Team',
+      excerpt: 'Great products fail because of bad positioning. Here\'s why nailing your positioning statement is the single highest-leverage thing you can do before launch.',
+      featuredImage: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1200&auto=format&fit=crop',
+    }
+  },
+  {
+    slug: 'ai-generated-vs-human-crafted-business-plans',
+    entry: {
+      title: 'AI-Generated vs. Human-Crafted Business Plans: A Honest Comparison',
+      category: 'Industry Trends',
+      publishDate: '2026-01-05',
+      author: 'InstantCompany Team',
+      excerpt: 'AI can generate a business blueprint in 60 seconds. But is it as good as working with a human strategist? Here\'s a balanced look at where AI wins, where it doesn\'t, and when you need both.',
+      featuredImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop',
+    }
+  },
+  {
+    slug: 'how-to-price-your-product-when-you-have-no-data',
+    entry: {
+      title: 'How to Price Your Product When You Have No Data',
+      category: 'Growth Strategies',
+      publishDate: '2025-12-20',
+      author: 'InstantCompany Team',
+      excerpt: 'Pricing a new product feels like guessing. But even without market data, there are proven frameworks that get you to a strong starting price.',
+      featuredImage: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=1200&auto=format&fit=crop',
     }
   }
 ];
@@ -70,33 +130,42 @@ function formatDate(dateStr: string | null) {
   <section class="py-16">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       {displayPosts.map((post, i) => (
-        <a href={`/blog/${post.slug}`} class={`group rounded-3xl p-8 flex flex-col justify-between min-h-[340px] transition-all hover:scale-[1.01] hover:shadow-lg ${i % 2 === 0 ? 'bg-white border border-gray-100' : 'bg-[#0f1115] text-white border border-white/5'}`}>
-          <div>
-            <div class="flex items-center gap-3 mb-4">
-              <span class={`text-xs px-2.5 py-1 rounded-full ${i % 2 === 0 ? 'bg-emerald-50 text-emerald-600 border border-emerald-200' : 'bg-emerald-400/10 text-emerald-400 border border-emerald-400/30'}`}>
-                {post.entry.category}
-              </span>
+        <a href={`/blog/${post.slug}`} class={`group rounded-3xl overflow-hidden flex flex-col transition-all hover:scale-[1.01] hover:shadow-lg ${i % 2 === 0 ? 'bg-white border border-gray-100' : 'bg-[#0f1115] text-white border border-white/5'}`}>
+          <div class="relative h-52 overflow-hidden">
+            <img
+              src={post.entry.featuredImage || fallbackImage}
+              alt={post.entry.title}
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+            <span class="absolute top-4 left-4 text-xs px-2.5 py-1 rounded-full bg-white/90 text-emerald-600 backdrop-blur-sm border border-white/50 font-medium">
+              {post.entry.category}
+            </span>
+          </div>
+          <div class="p-8 flex flex-col justify-between flex-1">
+            <div>
               {post.entry.publishDate && (
                 <span class={`text-xs ${i % 2 === 0 ? 'text-gray-400' : 'text-gray-500'}`}>
                   {formatDate(post.entry.publishDate)}
                 </span>
               )}
+              <h3 class={`text-xl mt-2 mb-3 font-manrope font-medium tracking-tighter group-hover:text-emerald-500 transition-colors ${i % 2 === 0 ? 'text-gray-900' : 'text-white'}`}>
+                {post.entry.title}
+              </h3>
+              <p class={`text-sm leading-relaxed line-clamp-3 ${i % 2 === 0 ? 'text-gray-500' : 'text-gray-400'}`}>
+                {post.entry.excerpt}
+              </p>
             </div>
-            <h3 class={`text-xl mb-3 font-manrope font-medium tracking-tighter group-hover:text-emerald-500 transition-colors ${i % 2 === 0 ? 'text-gray-900' : 'text-white'}`}>
-              {post.entry.title}
-            </h3>
-            <p class={`text-sm leading-relaxed ${i % 2 === 0 ? 'text-gray-500' : 'text-gray-400'}`}>
-              {post.entry.excerpt}
-            </p>
-          </div>
-          <div class={`flex items-center gap-3 pt-6 border-t mt-6 ${i % 2 === 0 ? 'border-gray-100' : 'border-white/10'}`}>
-            <div class={`w-8 h-8 rounded-full flex items-center justify-center ${i % 2 === 0 ? 'bg-emerald-50' : 'bg-emerald-400/10'}`}>
-              <iconify-icon icon="solar:pen-new-square-linear" class="text-emerald-500 text-sm"></iconify-icon>
+            <div class={`flex items-center gap-3 pt-6 border-t mt-6 ${i % 2 === 0 ? 'border-gray-100' : 'border-white/10'}`}>
+              <div class={`w-8 h-8 rounded-full flex items-center justify-center ${i % 2 === 0 ? 'bg-emerald-50' : 'bg-emerald-400/10'}`}>
+                <iconify-icon icon="solar:pen-new-square-linear" class="text-emerald-500 text-sm"></iconify-icon>
+              </div>
+              <div>
+                <p class={`text-sm ${i % 2 === 0 ? 'text-gray-900' : 'text-white'}`}>{post.entry.author}</p>
+              </div>
+              <iconify-icon icon="solar:arrow-right-linear" class={`ml-auto text-lg group-hover:translate-x-1 transition-transform ${i % 2 === 0 ? 'text-gray-300' : 'text-gray-600'}`}></iconify-icon>
             </div>
-            <div>
-              <p class={`text-sm ${i % 2 === 0 ? 'text-gray-900' : 'text-white'}`}>{post.entry.author}</p>
-            </div>
-            <iconify-icon icon="solar:arrow-right-linear" class={`ml-auto text-lg group-hover:translate-x-1 transition-transform ${i % 2 === 0 ? 'text-gray-300' : 'text-gray-600'}`}></iconify-icon>
           </div>
         </a>
       ))}
