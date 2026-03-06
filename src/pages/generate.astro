@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 ---
-<BaseLayout title="Generating Your Business | InstantCompany.com">
+<BaseLayout title="Generate Your Business | InstantCompany.com" description="Turn any idea into a complete business blueprint in 60 seconds. Enter your concept and get brand names, positioning, pricing, and launch copy instantly.">
   <section class="relative w-full rounded-[2.5rem] overflow-hidden bg-[#0f1115] text-white min-h-[200px] flex flex-col p-8 lg:p-12 shadow-2xl shadow-gray-200">
     <div class="absolute inset-0 z-0">
       <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop" alt="Abstract" class="opacity-30 mix-blend-overlay w-full h-full object-cover" />
@@ -12,14 +12,65 @@ import Footer from '../components/Footer.astro';
     <Header />
   </section>
 
+  <!-- Input State (shown when no idea param) -->
+  <div id="input-state" class="py-24 hidden">
+    <div class="max-w-2xl mx-auto text-center px-6">
+      <div class="w-16 h-16 bg-emerald-500/10 rounded-2xl flex items-center justify-center mx-auto mb-8 border border-emerald-500/20">
+        <iconify-icon icon="solar:magic-stick-3-linear" class="text-emerald-500 text-3xl"></iconify-icon>
+      </div>
+      <h1 class="text-3xl md:text-5xl text-gray-900 mb-4 font-manrope font-medium tracking-tighter">Generate Your Business</h1>
+      <p class="text-gray-500 text-lg mb-10 leading-relaxed max-w-lg mx-auto">
+        Describe your idea in plain English. Our AI will generate brand names, positioning, pricing, and launch copy in under 60 seconds.
+      </p>
+      <form id="generate-form" class="max-w-xl mx-auto">
+        <div class="flex flex-col sm:flex-row gap-3">
+          <input
+            id="idea-input"
+            type="text"
+            name="idea"
+            placeholder="e.g. A subscription box for pet owners who love organic treats"
+            class="flex-1 px-5 py-4 rounded-2xl border border-gray-200 bg-white text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-400 transition-all shadow-sm"
+            required
+          />
+          <button type="submit" class="px-6 py-4 rounded-2xl bg-gradient-to-b from-emerald-500 to-emerald-700 text-white text-sm font-medium hover:brightness-110 transition-all shadow-[0_0_25px_rgba(16,185,129,0.2)] border border-emerald-400/20 flex items-center justify-center gap-2 whitespace-nowrap">
+            Generate <iconify-icon icon="solar:arrow-right-linear" class="text-base"></iconify-icon>
+          </button>
+        </div>
+      </form>
+      <div class="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 text-left max-w-xl mx-auto">
+        <div class="flex items-start gap-3 p-4 rounded-2xl bg-gray-50 border border-gray-100">
+          <iconify-icon icon="solar:buildings-linear" class="text-emerald-500 text-lg mt-0.5"></iconify-icon>
+          <div>
+            <p class="text-sm text-gray-900 font-medium">Brand Names</p>
+            <p class="text-xs text-gray-400 mt-0.5">5 unique options</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3 p-4 rounded-2xl bg-gray-50 border border-gray-100">
+          <iconify-icon icon="solar:target-linear" class="text-emerald-500 text-lg mt-0.5"></iconify-icon>
+          <div>
+            <p class="text-sm text-gray-900 font-medium">Positioning</p>
+            <p class="text-xs text-gray-400 mt-0.5">Market-ready copy</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3 p-4 rounded-2xl bg-gray-50 border border-gray-100">
+          <iconify-icon icon="solar:tag-price-linear" class="text-emerald-500 text-lg mt-0.5"></iconify-icon>
+          <div>
+            <p class="text-sm text-gray-900 font-medium">Pricing</p>
+            <p class="text-xs text-gray-400 mt-0.5">Data-driven model</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Loading State -->
-  <div id="loading-state" class="py-24 text-center">
+  <div id="loading-state" class="py-24 text-center hidden">
     <div class="max-w-xl mx-auto">
       <div class="w-16 h-16 bg-emerald-500/10 rounded-2xl flex items-center justify-center mx-auto mb-8 border border-emerald-500/20">
         <iconify-icon icon="solar:cpu-linear" class="text-emerald-500 text-3xl animate-pulse"></iconify-icon>
       </div>
       <p id="loading-message" class="text-xl text-gray-900 mb-6 font-manrope font-medium tracking-tighter">Analyzing market gaps...</p>
-      <div class="w-full bg-gray-200 rounded-full h-2 mb-4 overflow-hidden">
+      <div class="w-full bg-gray-200 rounded-full h-2 mb-4 overflow-hidden max-w-md mx-auto">
         <div id="progress-bar" class="bg-emerald-500 h-2 rounded-full transition-all duration-700 ease-out" style="width: 0%"></div>
       </div>
       <p id="loading-sub" class="text-sm text-gray-500">This usually takes about 10 seconds</p>
@@ -34,7 +85,7 @@ import Footer from '../components/Footer.astro';
           <p class="text-sm text-gray-500 mb-1">Business Blueprint for</p>
           <h2 id="idea-display" class="text-2xl md:text-3xl text-gray-900 font-manrope font-medium tracking-tighter"></h2>
         </div>
-        <a href="/" class="flex items-center gap-2 bg-gray-900 text-white px-5 py-2.5 rounded-full text-sm hover:bg-gray-800 transition-colors">
+        <a href="/generate" class="flex items-center gap-2 bg-gray-900 text-white px-5 py-2.5 rounded-full text-sm hover:bg-gray-800 transition-colors">
           <iconify-icon icon="solar:restart-linear" class="text-base"></iconify-icon> New Idea
         </a>
       </div>
@@ -234,13 +285,38 @@ import Footer from '../components/Footer.astro';
     });
   }
 
+  // Handle form submission
+  const form = document.getElementById('generate-form');
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const idea = document.getElementById('idea-input').value.trim();
+      if (idea) {
+        // Update URL without reload and start generation
+        const url = new URL(window.location);
+        url.searchParams.set('idea', idea);
+        window.history.pushState({}, '', url);
+        startGeneration(idea);
+      }
+    });
+  }
+
   // Main flow
   const params = new URLSearchParams(window.location.search);
   const idea = params.get('idea');
 
   if (!idea) {
-    window.location.href = '/';
+    // Show the input form
+    document.getElementById('input-state').classList.remove('hidden');
   } else {
+    startGeneration(idea);
+  }
+
+  function startGeneration(ideaText) {
+    // Hide input, show loading
+    document.getElementById('input-state').classList.add('hidden');
+    document.getElementById('loading-state').classList.remove('hidden');
+
     const messages = [
       'Analyzing market gaps...',
       'Naming your company...',
@@ -261,71 +337,71 @@ import Footer from '../components/Footer.astro';
         progressBar.style.width = ((step + 1) / messages.length * 100) + '%';
       } else {
         clearInterval(interval);
-        showResults();
+        showResults(ideaText);
       }
     }, 1500);
 
     // Initial progress
     progressBar.style.width = (1 / messages.length * 100) + '%';
+  }
 
-    function showResults() {
-      const result = generateBusiness(idea);
+  function showResults(ideaText) {
+    const result = generateBusiness(ideaText);
 
-      document.getElementById('idea-display').textContent = idea;
+    document.getElementById('idea-display').textContent = ideaText;
 
-      // Names
-      const namesList = document.getElementById('names-list');
-      result.names.forEach((name, i) => {
-        const div = document.createElement('div');
-        div.className = 'flex items-center justify-between p-3 bg-gray-50 rounded-xl border border-gray-100';
-        div.innerHTML = `
-          <span class="text-gray-900 font-medium">${name}</span>
-          <button onclick="navigator.clipboard.writeText('${name}'); this.innerHTML='<iconify-icon icon=\\'solar:check-circle-linear\\' class=\\'text-emerald-500\\'></iconify-icon>'; setTimeout(() => this.innerHTML='<iconify-icon icon=\\'solar:copy-linear\\' class=\\'text-gray-400\\'></iconify-icon>', 1500)" class="p-1">
-            <iconify-icon icon="solar:copy-linear" class="text-gray-400"></iconify-icon>
-          </button>
-        `;
-        namesList.appendChild(div);
-      });
-
-      // Domains
-      const domainsList = document.getElementById('domains-list');
-      result.domains.forEach(domain => {
-        const div = document.createElement('div');
-        div.className = 'flex items-center justify-between p-3 bg-gray-50 rounded-xl border border-gray-100';
-        div.innerHTML = `
-          <span class="text-gray-900">${domain}</span>
-          <span class="bg-emerald-50 text-emerald-600 border border-emerald-200 text-xs px-2 py-0.5 rounded-full">Available</span>
-        `;
-        domainsList.appendChild(div);
-      });
-
-      // Logo
-      document.getElementById('logo-concept').textContent = result.logo;
-
-      // Positioning
-      document.getElementById('positioning').textContent = result.positioning;
-
-      // Landing copy
-      const copyDiv = document.getElementById('landing-copy');
-      copyDiv.innerHTML = `
-        <h4 class="text-xl text-gray-900 font-manrope font-medium tracking-tight">${result.heroHeadline}</h4>
-        <ul class="space-y-2 mt-4">
-          ${result.benefits.map(b => `<li class="flex items-start gap-2 text-gray-600"><iconify-icon icon="solar:check-circle-linear" class="text-emerald-500 mt-0.5 shrink-0"></iconify-icon> ${b}</li>`).join('')}
-        </ul>
-        <blockquote class="mt-4 p-4 bg-gray-50 rounded-xl border border-gray-100 text-gray-500 italic text-sm">${result.socialProof}</blockquote>
+    // Names
+    const namesList = document.getElementById('names-list');
+    result.names.forEach((name, i) => {
+      const div = document.createElement('div');
+      div.className = 'flex items-center justify-between p-3 bg-gray-50 rounded-xl border border-gray-100';
+      div.innerHTML = `
+        <span class="text-gray-900 font-medium">${name}</span>
+        <button onclick="navigator.clipboard.writeText('${name}'); this.innerHTML='<iconify-icon icon=\\'solar:check-circle-linear\\' class=\\'text-emerald-500\\'></iconify-icon>'; setTimeout(() => this.innerHTML='<iconify-icon icon=\\'solar:copy-linear\\' class=\\'text-gray-400\\'></iconify-icon>', 1500)" class="p-1">
+          <iconify-icon icon="solar:copy-linear" class="text-gray-400"></iconify-icon>
+        </button>
       `;
+      namesList.appendChild(div);
+    });
 
-      // Pricing
-      document.getElementById('pricing-model').textContent = result.pricing;
+    // Domains
+    const domainsList = document.getElementById('domains-list');
+    result.domains.forEach(domain => {
+      const div = document.createElement('div');
+      div.className = 'flex items-center justify-between p-3 bg-gray-50 rounded-xl border border-gray-100';
+      div.innerHTML = `
+        <span class="text-gray-900">${domain}</span>
+        <span class="bg-emerald-50 text-emerald-600 border border-emerald-200 text-xs px-2 py-0.5 rounded-full">Available</span>
+      `;
+      domainsList.appendChild(div);
+    });
 
-      // Domain registration button
-      document.getElementById('register-domain-btn').addEventListener('click', () => {
-        window.open('https://www.namecheap.com/domains/registration/results/?domain=' + encodeURIComponent(result.domains[0]), '_blank');
-      });
+    // Logo
+    document.getElementById('logo-concept').textContent = result.logo;
 
-      // Show results, hide loading
-      document.getElementById('loading-state').classList.add('hidden');
-      document.getElementById('results-state').classList.remove('hidden');
-    }
+    // Positioning
+    document.getElementById('positioning').textContent = result.positioning;
+
+    // Landing copy
+    const copyDiv = document.getElementById('landing-copy');
+    copyDiv.innerHTML = `
+      <h4 class="text-xl text-gray-900 font-manrope font-medium tracking-tight">${result.heroHeadline}</h4>
+      <ul class="space-y-2 mt-4">
+        ${result.benefits.map(b => `<li class="flex items-start gap-2 text-gray-600"><iconify-icon icon="solar:check-circle-linear" class="text-emerald-500 mt-0.5 shrink-0"></iconify-icon> ${b}</li>`).join('')}
+      </ul>
+      <blockquote class="mt-4 p-4 bg-gray-50 rounded-xl border border-gray-100 text-gray-500 italic text-sm">${result.socialProof}</blockquote>
+    `;
+
+    // Pricing
+    document.getElementById('pricing-model').textContent = result.pricing;
+
+    // Domain registration button
+    document.getElementById('register-domain-btn').addEventListener('click', () => {
+      window.open('https://www.namecheap.com/domains/registration/results/?domain=' + encodeURIComponent(result.domains[0]), '_blank');
+    });
+
+    // Show results, hide loading
+    document.getElementById('loading-state').classList.add('hidden');
+    document.getElementById('results-state').classList.remove('hidden');
   }
 </script>
