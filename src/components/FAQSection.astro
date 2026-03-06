@@ -1,0 +1,48 @@
+---
+const faqs = [
+  {
+    question: 'How much detail do I need to provide?',
+    answer: 'Just a sentence will do! The more specific you are (e.g., "A subscription box for urban indoor gardeners"), the more tailored the output will be.'
+  },
+  {
+    question: 'Are the domain suggestions available?',
+    answer: 'We check real-time availability for common TLDs like .com, .io, and .ai to ensure you can actually own the brand we suggest.'
+  },
+  {
+    question: 'Can I use the output for real business launches?',
+    answer: 'Absolutely. The copy, pricing, and strategy are designed to be production-ready, though we always recommend a final human touch before going live.'
+  },
+  {
+    question: 'Do I own the logos and concepts generated?',
+    answer: 'Yes, all concepts generated for you are yours to keep and develop further.'
+  },
+  {
+    question: 'How does the AI determine the pricing model?',
+    answer: 'We analyze your product category against successful competitors and current market trends to suggest the highest-converting price points.'
+  }
+];
+---
+<section class="py-16 px-4">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-12">
+      <span class="text-sm text-gray-500 mb-2 block">/ Support</span>
+      <h2 class="text-3xl text-gray-900 font-manrope font-medium tracking-tighter">Frequently Asked Questions</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+      {faqs.map((faq) => (
+        <div class="group">
+          <h3 class="text-lg text-gray-900 mb-2 flex items-center gap-2">
+            <span class="bg-gray-100 rounded-lg p-1 group-hover:bg-gray-200 transition-colors">
+              <iconify-icon icon="solar:add-circle-linear" class="text-gray-400 text-sm"></iconify-icon>
+            </span>
+            {faq.question}
+          </h3>
+          <p class="text-gray-500 text-sm leading-relaxed pl-8">
+            {faq.answer}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

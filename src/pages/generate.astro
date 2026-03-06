@@ -1,0 +1,331 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+<BaseLayout title="Generating Your Business | InstantCompany.com">
+  <section class="relative w-full rounded-[2.5rem] overflow-hidden bg-[#0f1115] text-white min-h-[200px] flex flex-col p-8 lg:p-12 shadow-2xl shadow-gray-200">
+    <div class="absolute inset-0 z-0">
+      <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop" alt="Abstract" class="opacity-30 mix-blend-overlay w-full h-full object-cover" />
+      <div class="bg-gradient-to-t from-[#0f1115] via-transparent to-[#0f1115]/80 absolute inset-0"></div>
+    </div>
+    <Header />
+  </section>
+
+  <!-- Loading State -->
+  <div id="loading-state" class="py-24 text-center">
+    <div class="max-w-xl mx-auto">
+      <div class="w-16 h-16 bg-emerald-500/10 rounded-2xl flex items-center justify-center mx-auto mb-8 border border-emerald-500/20">
+        <iconify-icon icon="solar:cpu-linear" class="text-emerald-500 text-3xl animate-pulse"></iconify-icon>
+      </div>
+      <p id="loading-message" class="text-xl text-gray-900 mb-6 font-manrope font-medium tracking-tighter">Analyzing market gaps...</p>
+      <div class="w-full bg-gray-200 rounded-full h-2 mb-4 overflow-hidden">
+        <div id="progress-bar" class="bg-emerald-500 h-2 rounded-full transition-all duration-700 ease-out" style="width: 0%"></div>
+      </div>
+      <p id="loading-sub" class="text-sm text-gray-500">This usually takes about 10 seconds</p>
+    </div>
+  </div>
+
+  <!-- Results State (Hidden Initially) -->
+  <div id="results-state" class="hidden">
+    <div class="py-8">
+      <div class="flex items-center justify-between mb-8">
+        <div>
+          <p class="text-sm text-gray-500 mb-1">Business Blueprint for</p>
+          <h2 id="idea-display" class="text-2xl md:text-3xl text-gray-900 font-manrope font-medium tracking-tighter"></h2>
+        </div>
+        <a href="/" class="flex items-center gap-2 bg-gray-900 text-white px-5 py-2.5 rounded-full text-sm hover:bg-gray-800 transition-colors">
+          <iconify-icon icon="solar:restart-linear" class="text-base"></iconify-icon> New Idea
+        </a>
+      </div>
+
+      <!-- Results Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+        <!-- Company Names Card -->
+        <div class="bg-white rounded-3xl p-8 shadow-sm border border-gray-100">
+          <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 bg-emerald-50 rounded-xl flex items-center justify-center border border-emerald-100">
+                <iconify-icon icon="solar:buildings-linear" class="text-emerald-600 text-xl"></iconify-icon>
+              </div>
+              <h3 class="text-lg text-gray-900 font-manrope font-medium tracking-tight">Company Names</h3>
+            </div>
+          </div>
+          <div id="names-list" class="space-y-3"></div>
+        </div>
+
+        <!-- Domain Names Card -->
+        <div class="bg-white rounded-3xl p-8 shadow-sm border border-gray-100">
+          <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 bg-emerald-50 rounded-xl flex items-center justify-center border border-emerald-100">
+                <iconify-icon icon="solar:global-linear" class="text-emerald-600 text-xl"></iconify-icon>
+              </div>
+              <h3 class="text-lg text-gray-900 font-manrope font-medium tracking-tight">Domain Suggestions</h3>
+            </div>
+          </div>
+          <div id="domains-list" class="space-y-3"></div>
+        </div>
+
+        <!-- Logo Concept Card -->
+        <div class="bg-white rounded-3xl p-8 shadow-sm border border-gray-100">
+          <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 bg-emerald-50 rounded-xl flex items-center justify-center border border-emerald-100">
+                <iconify-icon icon="solar:pallete-2-linear" class="text-emerald-600 text-xl"></iconify-icon>
+              </div>
+              <h3 class="text-lg text-gray-900 font-manrope font-medium tracking-tight">Logo Concept</h3>
+            </div>
+            <button onclick="copyToClipboard(this)" data-section="logo" class="text-gray-400 hover:text-emerald-500 transition-colors">
+              <iconify-icon icon="solar:copy-linear" class="text-xl"></iconify-icon>
+            </button>
+          </div>
+          <p id="logo-concept" class="text-gray-600 leading-relaxed"></p>
+        </div>
+
+        <!-- Positioning Statement Card -->
+        <div class="bg-white rounded-3xl p-8 shadow-sm border border-gray-100">
+          <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 bg-emerald-50 rounded-xl flex items-center justify-center border border-emerald-100">
+                <iconify-icon icon="solar:target-linear" class="text-emerald-600 text-xl"></iconify-icon>
+              </div>
+              <h3 class="text-lg text-gray-900 font-manrope font-medium tracking-tight">Positioning Statement</h3>
+            </div>
+            <button onclick="copyToClipboard(this)" data-section="positioning" class="text-gray-400 hover:text-emerald-500 transition-colors">
+              <iconify-icon icon="solar:copy-linear" class="text-xl"></iconify-icon>
+            </button>
+          </div>
+          <p id="positioning" class="text-gray-600 leading-relaxed text-lg italic"></p>
+        </div>
+
+        <!-- Landing Page Copy Card (Full Width) -->
+        <div class="bg-white rounded-3xl p-8 shadow-sm border border-gray-100 lg:col-span-2">
+          <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 bg-emerald-50 rounded-xl flex items-center justify-center border border-emerald-100">
+                <iconify-icon icon="solar:document-text-linear" class="text-emerald-600 text-xl"></iconify-icon>
+              </div>
+              <h3 class="text-lg text-gray-900 font-manrope font-medium tracking-tight">Landing Page Copy</h3>
+            </div>
+            <button onclick="copyToClipboard(this)" data-section="copy" class="text-gray-400 hover:text-emerald-500 transition-colors">
+              <iconify-icon icon="solar:copy-linear" class="text-xl"></iconify-icon>
+            </button>
+          </div>
+          <div id="landing-copy" class="space-y-4"></div>
+        </div>
+
+        <!-- Pricing Model Card -->
+        <div class="bg-[#0f1115] rounded-3xl p-8 text-white lg:col-span-2">
+          <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 bg-emerald-400/20 rounded-xl flex items-center justify-center border border-emerald-400/30">
+                <iconify-icon icon="solar:tag-price-linear" class="text-emerald-400 text-xl"></iconify-icon>
+              </div>
+              <h3 class="text-lg text-white font-manrope font-medium tracking-tight">Suggested Pricing Model</h3>
+            </div>
+            <button onclick="copyToClipboard(this)" data-section="pricing" class="text-gray-400 hover:text-emerald-400 transition-colors">
+              <iconify-icon icon="solar:copy-linear" class="text-xl"></iconify-icon>
+            </button>
+          </div>
+          <p id="pricing-model" class="text-gray-300 leading-relaxed text-lg"></p>
+        </div>
+      </div>
+
+      <!-- Post-Result CTAs -->
+      <div class="flex flex-col sm:flex-row gap-4 mt-8 justify-center">
+        <button class="px-8 py-3 rounded-full bg-emerald-500 text-white hover:bg-emerald-400 transition-colors shadow-[0_0_20px_rgba(16,185,129,0.3)] flex items-center justify-center gap-2">
+          <iconify-icon icon="solar:bookmark-linear" class="text-lg"></iconify-icon> Save Full Blueprint (Free Account)
+        </button>
+        <button id="register-domain-btn" class="px-8 py-3 rounded-full bg-white text-gray-900 border border-gray-200 hover:bg-gray-50 transition-colors flex items-center justify-center gap-2">
+          <iconify-icon icon="solar:global-linear" class="text-lg"></iconify-icon> Register Domain
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <Footer />
+</BaseLayout>
+
+<script is:inline>
+  // Business name/concept generation templates
+  const templates = {
+    prefixes: ['Nova', 'Zen', 'Bolt', 'Arc', 'Peak', 'Flux', 'Vibe', 'Edge', 'Core', 'Leap', 'Hive', 'Pulse', 'Drift', 'Bloom', 'Craft'],
+    suffixes: ['ly', 'ify', 'Hub', 'Lab', 'AI', 'Pro', 'Go', 'Up', 'Box', 'Nest', 'Base', 'Flow', 'Stack', 'Path', 'Shift'],
+    domains: ['.com', '.io', '.co', '.ai', '.app'],
+    logos: [
+      'A minimalist geometric mark combining sharp angles with a flowing curve, rendered in deep navy and electric emerald. The icon suggests forward momentum and innovation.',
+      'An abstract lettermark with interlocking shapes that form a subtle arrow pointing upward. Colors: charcoal and warm gold on a clean white backdrop.',
+      'A clean, sans-serif wordmark paired with a small circular icon featuring intersecting lines that symbolize connection and growth. Palette: slate blue and coral accent.',
+      'A bold, modern monogram using the first two letters of the brand, enclosed in a rounded square. Deep teal and white with a subtle gradient.',
+      'A simple yet distinctive icon of interconnected nodes forming a brain-like pattern, representing AI-driven intelligence. Midnight purple and bright green.'
+    ]
+  };
+
+  function generateBusiness(idea) {
+    const words = idea.toLowerCase().split(/\s+/);
+    const seed = words.reduce((acc, w) => acc + w.charCodeAt(0), 0);
+    const pick = (arr, offset = 0) => arr[(seed + offset) % arr.length];
+
+    // Generate 5 company names
+    const names = [];
+    for (let i = 0; i < 5; i++) {
+      const prefix = pick(templates.prefixes, i * 3);
+      const suffix = pick(templates.suffixes, i * 7 + 1);
+      names.push(prefix + suffix);
+    }
+
+    // Generate 3 domain suggestions
+    const domains = [
+      names[0].toLowerCase() + pick(templates.domains, 0),
+      'get' + names[1].toLowerCase() + pick(templates.domains, 1),
+      names[2].toLowerCase() + 'hq' + pick(templates.domains, 2)
+    ];
+
+    // Logo concept
+    const logo = pick(templates.logos, seed);
+
+    // Extract key concept from idea
+    const keyAction = idea.length > 30 ? idea.substring(0, 60) + '...' : idea;
+
+    // Positioning statement
+    const audiences = ['busy professionals', 'small business owners', 'ambitious entrepreneurs', 'modern creators', 'growing teams'];
+    const audience = pick(audiences, 2);
+    const positioning = `We help ${audience} ${idea.toLowerCase().includes('for') ? idea.toLowerCase().split('for')[0].trim() : 'achieve their goals'} by providing an intelligent, AI-powered platform that eliminates guesswork and accelerates growth.`;
+
+    // Landing page copy
+    const heroHeadline = `The Smartest Way to ${idea.split(' ').slice(0, 4).join(' ')}`;
+    const benefits = [
+      `Save 10+ hours per week with automated ${words.slice(0, 2).join(' ')} workflows`,
+      `Join 5,000+ ${audience} already transforming their operations`,
+      `Get started in under 2 minutes with zero technical setup required`
+    ];
+    const socialProof = `"${names[0]} completely changed how we approach ${words[0]}. We saw results in the first week." — Early Beta User`;
+
+    // Pricing model
+    const pricingOptions = [
+      `Freemium Model: Free tier with core features, $29/mo Pro tier with advanced analytics and unlimited usage, $99/mo Team tier with collaboration tools and priority support.`,
+      `Subscription: $19/mo Starter (ideal for individuals), $49/mo Growth (for small teams of 2-5), $149/mo Scale (for agencies and enterprises with API access).`,
+      `Usage-Based: Pay-as-you-go at $0.10 per transaction, or lock in $39/mo for up to 500 transactions. Enterprise volume discounts available.`,
+      `One-Time Purchase: $299 Lifetime Access with free updates for 1 year, or $499 with lifetime updates and priority support.`
+    ];
+    const pricing = pick(pricingOptions, 4);
+
+    return { names, domains, logo, positioning, heroHeadline, benefits, socialProof, pricing };
+  }
+
+  function copyToClipboard(btn) {
+    const section = btn.dataset.section;
+    let text = '';
+    if (section === 'logo') text = document.getElementById('logo-concept').textContent;
+    if (section === 'positioning') text = document.getElementById('positioning').textContent;
+    if (section === 'copy') text = document.getElementById('landing-copy').textContent;
+    if (section === 'pricing') text = document.getElementById('pricing-model').textContent;
+
+    navigator.clipboard.writeText(text).then(() => {
+      const icon = btn.querySelector('iconify-icon');
+      icon.setAttribute('icon', 'solar:check-circle-linear');
+      btn.classList.add('text-emerald-500');
+      setTimeout(() => {
+        icon.setAttribute('icon', 'solar:copy-linear');
+        btn.classList.remove('text-emerald-500');
+      }, 2000);
+    });
+  }
+
+  // Main flow
+  const params = new URLSearchParams(window.location.search);
+  const idea = params.get('idea');
+
+  if (!idea) {
+    window.location.href = '/';
+  } else {
+    const messages = [
+      'Analyzing market gaps...',
+      'Naming your company...',
+      'Generating brand identities...',
+      'Calculating optimal pricing...',
+      'Drafting launch copy...',
+      'Finalizing your blueprint...'
+    ];
+
+    let step = 0;
+    const progressBar = document.getElementById('progress-bar');
+    const loadingMessage = document.getElementById('loading-message');
+
+    const interval = setInterval(() => {
+      step++;
+      if (step < messages.length) {
+        loadingMessage.textContent = messages[step];
+        progressBar.style.width = ((step + 1) / messages.length * 100) + '%';
+      } else {
+        clearInterval(interval);
+        showResults();
+      }
+    }, 1500);
+
+    // Initial progress
+    progressBar.style.width = (1 / messages.length * 100) + '%';
+
+    function showResults() {
+      const result = generateBusiness(idea);
+
+      document.getElementById('idea-display').textContent = idea;
+
+      // Names
+      const namesList = document.getElementById('names-list');
+      result.names.forEach((name, i) => {
+        const div = document.createElement('div');
+        div.className = 'flex items-center justify-between p-3 bg-gray-50 rounded-xl border border-gray-100';
+        div.innerHTML = `
+          <span class="text-gray-900 font-medium">${name}</span>
+          <button onclick="navigator.clipboard.writeText('${name}'); this.innerHTML='<iconify-icon icon=\\'solar:check-circle-linear\\' class=\\'text-emerald-500\\'></iconify-icon>'; setTimeout(() => this.innerHTML='<iconify-icon icon=\\'solar:copy-linear\\' class=\\'text-gray-400\\'></iconify-icon>', 1500)" class="p-1">
+            <iconify-icon icon="solar:copy-linear" class="text-gray-400"></iconify-icon>
+          </button>
+        `;
+        namesList.appendChild(div);
+      });
+
+      // Domains
+      const domainsList = document.getElementById('domains-list');
+      result.domains.forEach(domain => {
+        const div = document.createElement('div');
+        div.className = 'flex items-center justify-between p-3 bg-gray-50 rounded-xl border border-gray-100';
+        div.innerHTML = `
+          <span class="text-gray-900">${domain}</span>
+          <span class="bg-emerald-50 text-emerald-600 border border-emerald-200 text-xs px-2 py-0.5 rounded-full">Available</span>
+        `;
+        domainsList.appendChild(div);
+      });
+
+      // Logo
+      document.getElementById('logo-concept').textContent = result.logo;
+
+      // Positioning
+      document.getElementById('positioning').textContent = result.positioning;
+
+      // Landing copy
+      const copyDiv = document.getElementById('landing-copy');
+      copyDiv.innerHTML = `
+        <h4 class="text-xl text-gray-900 font-manrope font-medium tracking-tight">${result.heroHeadline}</h4>
+        <ul class="space-y-2 mt-4">
+          ${result.benefits.map(b => `<li class="flex items-start gap-2 text-gray-600"><iconify-icon icon="solar:check-circle-linear" class="text-emerald-500 mt-0.5 shrink-0"></iconify-icon> ${b}</li>`).join('')}
+        </ul>
+        <blockquote class="mt-4 p-4 bg-gray-50 rounded-xl border border-gray-100 text-gray-500 italic text-sm">${result.socialProof}</blockquote>
+      `;
+
+      // Pricing
+      document.getElementById('pricing-model').textContent = result.pricing;
+
+      // Domain registration button
+      document.getElementById('register-domain-btn').addEventListener('click', () => {
+        window.open('https://www.namecheap.com/domains/registration/results/?domain=' + encodeURIComponent(result.domains[0]), '_blank');
+      });
+
+      // Show results, hide loading
+      document.getElementById('loading-state').classList.add('hidden');
+      document.getElementById('results-state').classList.remove('hidden');
+    }
+  }
+</script>

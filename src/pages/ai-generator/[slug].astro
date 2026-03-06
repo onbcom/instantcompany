@@ -1,0 +1,121 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { industries } from '../../data/industries';
+import type { GetStaticPaths } from 'astro';
+
+export const getStaticPaths = (() => {
+  return industries.map((industry) => ({
+    params: { slug: industry.slug },
+    props: { industry },
+  }));
+}) satisfies GetStaticPaths;
+
+const { industry } = Astro.props;
+---
+<BaseLayout
+  title={`AI ${industry.name} Business Generator | InstantCompany.com`}
+  description={industry.description}
+>
+  <section class="relative w-full rounded-[2.5rem] overflow-hidden bg-[#0f1115] text-white p-8 lg:p-12 shadow-2xl shadow-gray-200">
+    <div class="absolute inset-0 z-0">
+      <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop" alt="Abstract" class="opacity-20 mix-blend-overlay w-full h-full object-cover" />
+      <div class="bg-gradient-to-t from-[#0f1115] via-transparent to-[#0f1115]/80 absolute inset-0"></div>
+    </div>
+    <Header />
+    <div class="relative z-10 mt-16 max-w-3xl pb-8">
+      <div class="flex items-center gap-2 mb-4">
+        <a href="/ai-generator" class="text-gray-400 hover:text-white text-sm transition-colors">Industries</a>
+        <iconify-icon icon="solar:arrow-right-linear" class="text-gray-600 text-xs"></iconify-icon>
+        <span class="text-emerald-400 text-sm">{industry.name}</span>
+      </div>
+      <h1 class="text-4xl md:text-6xl text-white mb-4 font-manrope font-medium tracking-tighter">
+        AI {industry.name} <br />Business Generator
+      </h1>
+      <p class="text-lg text-gray-300 leading-relaxed max-w-2xl">{industry.description}</p>
+    </div>
+  </section>
+
+  <!-- Generator Input for this Industry -->
+  <section class="py-16">
+    <div class="max-w-2xl mx-auto text-center">
+      <h2 class="text-2xl md:text-3xl text-gray-900 mb-4 font-manrope font-medium tracking-tighter">
+        Describe your {industry.name.toLowerCase()} business idea
+      </h2>
+      <p class="text-gray-500 mb-8">Be as specific or as vague as you like. Our AI adapts to your level of detail.</p>
+      <form id="industry-generator-form" class="flex flex-col sm:flex-row gap-3">
+        <input
+          type="text"
+          name="idea"
+          placeholder={industry.exampleIdea}
+          required
+          class="flex-1 bg-white border border-gray-200 rounded-full px-6 py-4 text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all text-base"
+        />
+        <button type="submit" class="bg-emerald-500 text-white px-8 py-4 rounded-full font-medium hover:bg-emerald-400 transition-colors whitespace-nowrap shadow-[0_0_20px_rgba(16,185,129,0.3)] flex items-center justify-center gap-2">
+          Generate <iconify-icon icon="solar:arrow-right-linear" class="text-lg"></iconify-icon>
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Benefits for this industry -->
+  <section class="py-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {industry.benefits.map((benefit, i) => (
+        <div class="bg-white rounded-3xl p-8 border border-gray-100">
+          <div class="w-10 h-10 bg-emerald-50 rounded-xl flex items-center justify-center border border-emerald-100 mb-4">
+            <iconify-icon icon="solar:check-circle-linear" class="text-emerald-600 text-xl"></iconify-icon>
+          </div>
+          <p class="text-gray-900 font-medium">{benefit}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- FAQ-style questions for SEO -->
+  <section class="py-12">
+    <h2 class="text-2xl text-gray-900 mb-8 font-manrope font-medium tracking-tighter">Common Questions About {industry.name} Businesses</h2>
+    <div class="space-y-6">
+      {industry.keyQuestions.map((question) => (
+        <div class="bg-white rounded-2xl p-6 border border-gray-100">
+          <h3 class="text-lg text-gray-900 flex items-center gap-2 mb-2">
+            <span class="bg-gray-100 rounded-lg p-1">
+              <iconify-icon icon="solar:add-circle-linear" class="text-gray-400 text-sm"></iconify-icon>
+            </span>
+            {question}
+          </h3>
+          <p class="text-gray-500 text-sm leading-relaxed pl-8">
+            Use InstantCompany's AI generator to explore answers to this question with a complete business blueprint tailored to the {industry.name.toLowerCase()} industry.
+          </p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-12 text-center">
+    <div class="bg-[#0f1115] rounded-3xl p-12 relative overflow-hidden">
+      <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-emerald-500/10 rounded-full blur-[80px] pointer-events-none"></div>
+      <div class="relative z-10">
+        <h2 class="text-3xl text-white mb-4 font-manrope font-medium tracking-tighter">Ready to build your {industry.name.toLowerCase()} business?</h2>
+        <p class="text-gray-400 mb-8">Your complete business blueprint is just 60 seconds away.</p>
+        <a href="/#generator" class="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-emerald-500 text-white hover:bg-emerald-400 transition-colors shadow-[0_0_20px_rgba(16,185,129,0.3)]">
+          Start Generating Now <iconify-icon icon="solar:arrow-right-linear" class="text-lg"></iconify-icon>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>
+
+<script is:inline>
+  document.getElementById('industry-generator-form')?.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const idea = this.querySelector('input[name="idea"]').value;
+    if (idea.trim()) {
+      window.location.href = '/generate?idea=' + encodeURIComponent(idea.trim());
+    }
+  });
+</script>

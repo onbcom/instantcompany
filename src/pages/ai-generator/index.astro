@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { industries } from '../../data/industries';
+---
+<BaseLayout title="AI Business Generator by Industry | InstantCompany.com" description="Explore AI-powered business ideas across every industry. Find your niche and generate a full business blueprint instantly.">
+  <section class="relative w-full rounded-[2.5rem] overflow-hidden bg-[#0f1115] text-white p-8 lg:p-12 shadow-2xl shadow-gray-200">
+    <div class="absolute inset-0 z-0">
+      <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop" alt="Abstract" class="opacity-20 mix-blend-overlay w-full h-full object-cover" />
+      <div class="bg-gradient-to-t from-[#0f1115] via-transparent to-[#0f1115]/80 absolute inset-0"></div>
+    </div>
+    <Header />
+    <div class="relative z-10 mt-16 max-w-3xl pb-8">
+      <h1 class="text-4xl md:text-6xl text-white mb-4 font-manrope font-medium tracking-tighter">Business Ideas by Industry</h1>
+      <p class="text-lg text-gray-300 leading-relaxed">Pick a sector. Get a blueprint. Launch faster than you ever thought possible.</p>
+    </div>
+  </section>
+
+  <section class="py-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {industries.map((industry, i) => (
+        <a href={`/ai-generator/${industry.slug}`} class={`group rounded-3xl p-8 flex flex-col justify-between min-h-[300px] transition-all duration-300 hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)] ${i % 3 === 1 ? 'bg-[#0f1115] text-white hover:bg-[#1a1d24]' : 'bg-white border border-gray-100 hover:border-emerald-100'}`}>
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <span class={`text-xs px-2 py-1 rounded-full ${i % 3 === 1 ? 'bg-emerald-400/10 text-emerald-400 border border-emerald-400/30' : 'bg-emerald-50 text-emerald-600 border border-emerald-200'}`}>
+                {industry.name}
+              </span>
+              <iconify-icon icon="solar:arrow-right-up-linear" class={`text-lg transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 ${i % 3 === 1 ? 'text-gray-500 group-hover:text-emerald-400' : 'text-gray-400 group-hover:text-emerald-500'}`}></iconify-icon>
+            </div>
+            <h3 class={`text-xl mb-3 font-manrope font-medium tracking-tighter ${i % 3 === 1 ? 'text-white' : 'text-gray-900'}`}>
+              AI {industry.name} Generator
+            </h3>
+            <p class={`text-sm leading-relaxed ${i % 3 === 1 ? 'text-gray-400' : 'text-gray-500'}`}>
+              {industry.description}
+            </p>
+          </div>
+          <div class={`mt-6 pt-4 border-t ${i % 3 === 1 ? 'border-white/10' : 'border-gray-100'}`}>
+            <span class={`text-sm ${i % 3 === 1 ? 'text-emerald-400' : 'text-emerald-600'}`}>Generate {industry.name} ideas &rarr;</span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>

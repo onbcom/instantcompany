@@ -1,0 +1,49 @@
+---
+import Header from './Header.astro';
+---
+<section id="generator" class="relative w-full rounded-[2.5rem] overflow-hidden bg-[#0f1115] text-white min-h-[650px] flex flex-col justify-between p-8 lg:p-12 shadow-2xl shadow-gray-200">
+  <!-- Background Abstract Image -->
+  <div class="absolute inset-0 z-0">
+    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop" alt="Abstract 3D" class="opacity-40 mix-blend-overlay w-full h-full object-cover" />
+    <div class="bg-gradient-to-t from-[#0f1115] via-transparent to-[#0f1115]/80 absolute top-0 right-0 bottom-0 left-0"></div>
+  </div>
+
+  <Header />
+
+  <!-- Hero Content -->
+  <div class="relative z-10 mt-auto max-w-4xl pb-4">
+    <h1 class="text-5xl md:text-7xl leading-[1.1] mb-6 text-white font-manrope font-medium tracking-tighter">
+      Turn Any Idea Into a <br />
+      <span class="text-gray-400 font-manrope font-medium tracking-tighter">Revenue-Ready Company</span> <br />
+      in Minutes.
+    </h1>
+
+    <p class="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl leading-relaxed">
+      Stop overthinking and start building. Enter your basic concept and InstantCompany generates your brand, positioning, pricing, and copy instantly.
+    </p>
+
+    <!-- Spark Input Tool Area -->
+    <form id="hero-generator-form" class="flex flex-col sm:flex-row gap-3 max-w-2xl">
+      <input
+        type="text"
+        name="idea"
+        placeholder="e.g., An AI-powered virtual assistant for busy real estate agents"
+        required
+        class="flex-1 bg-white/5 border border-white/10 rounded-full px-6 py-4 text-white placeholder:text-gray-500 focus:outline-none focus:border-emerald-500 focus:bg-white/10 transition-colors text-base backdrop-blur-sm"
+      />
+      <button type="submit" class="bg-emerald-500 text-white px-8 py-4 rounded-full font-medium hover:bg-emerald-400 transition-colors whitespace-nowrap shadow-[0_0_20px_rgba(16,185,129,0.3)] flex items-center justify-center gap-2">
+        Generate My Business <iconify-icon icon="solar:arrow-right-linear" class="text-lg"></iconify-icon>
+      </button>
+    </form>
+  </div>
+</section>
+
+<script is:inline>
+  document.getElementById('hero-generator-form')?.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const idea = this.querySelector('input[name="idea"]').value;
+    if (idea.trim()) {
+      window.location.href = '/generate?idea=' + encodeURIComponent(idea.trim());
+    }
+  });
+</script>

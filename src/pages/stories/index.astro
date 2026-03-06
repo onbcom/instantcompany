@@ -1,0 +1,96 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { createReader } from '@keystatic/core/reader';
+import keystaticConfig from '../../../keystatic.config';
+
+const reader = createReader(process.cwd(), keystaticConfig);
+const stories = await reader.collections.stories.all();
+
+// Fallback sample stories if none exist in CMS yet
+const sampleStories = stories.length > 0 ? stories : [
+  {
+    slug: 'petpal-ai',
+    entry: {
+      title: 'How PetPal AI Launched in 48 Hours',
+      industry: 'Pet Services',
+      founderName: 'Marcus Chen',
+      quote: 'I went from a napkin idea to a fully branded business in under a minute. InstantCompany gave me the confidence to actually launch.',
+    }
+  },
+  {
+    slug: 'greenleaf-consulting',
+    entry: {
+      title: 'GreenLeaf Consulting: From Side Hustle to $10K MRR',
+      industry: 'Consulting',
+      founderName: 'Aisha Patel',
+      quote: 'The positioning statement and pricing model were spot-on. It felt like having a senior strategist on speed-dial.',
+    }
+  },
+  {
+    slug: 'swiftship-logistics',
+    entry: {
+      title: 'SwiftShip Logistics Found Product-Market Fit Faster',
+      industry: 'E-commerce',
+      founderName: 'Diego Ramirez',
+      quote: 'We used the generated landing page copy almost word-for-word. Our conversion rate was 12% from day one.',
+    }
+  },
+  {
+    slug: 'brewbox-subscription',
+    entry: {
+      title: 'BrewBox: A Coffee Subscription Born from AI',
+      industry: 'Coffee Shop',
+      founderName: 'Lena Okafor',
+      quote: 'InstantCompany helped me see that subscription was the right model. I would never have priced it that way on my own.',
+    }
+  }
+];
+---
+<BaseLayout title="Success Stories | InstantCompany.com" description="See how founders used InstantCompany to launch real businesses faster.">
+  <section class="relative w-full rounded-[2.5rem] overflow-hidden bg-[#0f1115] text-white p-8 lg:p-12 shadow-2xl shadow-gray-200">
+    <div class="absolute inset-0 z-0">
+      <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop" alt="Abstract" class="opacity-20 mix-blend-overlay w-full h-full object-cover" />
+      <div class="bg-gradient-to-t from-[#0f1115] via-transparent to-[#0f1115]/80 absolute inset-0"></div>
+    </div>
+    <Header />
+    <div class="relative z-10 mt-16 max-w-3xl pb-8">
+      <h1 class="text-4xl md:text-6xl text-white mb-4 font-manrope font-medium tracking-tighter">Success Stories</h1>
+      <p class="text-lg text-gray-300 leading-relaxed">Real founders. Real businesses. All started with a single sentence.</p>
+    </div>
+  </section>
+
+  <section class="py-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {sampleStories.map((story, i) => (
+        <div class={`rounded-3xl p-8 flex flex-col justify-between min-h-[360px] ${i % 2 === 0 ? 'bg-white border border-gray-100' : 'bg-[#0f1115] text-white'}`}>
+          <div>
+            <div class="flex items-center gap-2 mb-4">
+              <span class={`text-xs px-2 py-1 rounded-full ${i % 2 === 0 ? 'bg-emerald-50 text-emerald-600 border border-emerald-200' : 'bg-emerald-400/10 text-emerald-400 border border-emerald-400/30'}`}>
+                {story.entry.industry}
+              </span>
+            </div>
+            <h3 class={`text-xl mb-4 font-manrope font-medium tracking-tighter ${i % 2 === 0 ? 'text-gray-900' : 'text-white'}`}>
+              {story.entry.title}
+            </h3>
+            <blockquote class={`text-sm leading-relaxed italic ${i % 2 === 0 ? 'text-gray-500' : 'text-gray-400'}`}>
+              "{story.entry.quote}"
+            </blockquote>
+          </div>
+          <div class={`flex items-center gap-3 pt-6 border-t mt-6 ${i % 2 === 0 ? 'border-gray-100' : 'border-white/10'}`}>
+            <div class={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-medium ${i % 2 === 0 ? 'bg-gray-100 text-gray-600' : 'bg-white/10 text-white'}`}>
+              {story.entry.founderName.split(' ').map(n => n[0]).join('')}
+            </div>
+            <div>
+              <p class={`text-sm ${i % 2 === 0 ? 'text-gray-900' : 'text-white'}`}>{story.entry.founderName}</p>
+              <p class={`text-xs ${i % 2 === 0 ? 'text-gray-500' : 'text-gray-500'}`}>Founder</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>

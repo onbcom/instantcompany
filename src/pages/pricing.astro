@@ -1,0 +1,147 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+<BaseLayout title="Pricing | InstantCompany.com" description="Start for free. Upgrade when you're ready for deep-dive market analysis and advanced asset exports.">
+  <!-- Dark Header Bar -->
+  <section class="relative w-full rounded-[2.5rem] overflow-hidden bg-[#0f1115] text-white p-8 lg:p-12 shadow-2xl shadow-gray-200">
+    <div class="absolute inset-0 z-0">
+      <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop" alt="Abstract" class="opacity-20 mix-blend-overlay w-full h-full object-cover" />
+      <div class="bg-gradient-to-t from-[#0f1115] via-transparent to-[#0f1115]/80 absolute inset-0"></div>
+    </div>
+    <Header />
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="relative bg-[#0f1115] rounded-[2.5rem] p-8 lg:p-16 overflow-hidden shadow-2xl mt-6">
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 select-none pointer-events-none w-full text-center">
+      <span class="text-[12rem] lg:text-[18rem] text-white/[0.02] leading-none font-manrope font-medium tracking-tighter">PLANS</span>
+    </div>
+
+    <div class="relative z-10 flex flex-col items-center text-center max-w-2xl mx-auto mb-16">
+      <span class="inline-flex items-center rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-1 text-xs text-emerald-400 mb-6">
+        Pricing
+      </span>
+      <h2 class="text-4xl md:text-5xl text-white mb-4 font-manrope font-medium tracking-tighter">
+        Pay as you <br /> generate.
+      </h2>
+      <p class="text-gray-400 text-sm md:text-base max-w-md mx-auto leading-relaxed">
+        Start for free. Upgrade when you're ready for deep-dive market analysis and advanced asset exports.
+      </p>
+    </div>
+
+    <div class="relative z-10 grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto">
+      <!-- Spark (Free) -->
+      <div class="group relative flex flex-col p-8 bg-white/[0.03] border border-white/10 rounded-3xl hover:bg-white/[0.05] transition-colors duration-300">
+        <div class="mb-6 flex items-start justify-between">
+          <div class="h-10 w-10 rounded-xl bg-white/10 flex items-center justify-center border border-white/10">
+            <iconify-icon icon="solar:box-linear" class="text-white text-xl"></iconify-icon>
+          </div>
+        </div>
+        <div class="mb-6">
+          <div class="flex items-baseline gap-1">
+            <span class="text-3xl text-white font-manrope font-medium tracking-tighter">$0</span>
+          </div>
+          <h3 class="text-lg text-white mt-4">Spark</h3>
+          <p class="text-sm text-gray-400 mt-2 leading-relaxed">Basic concept validation and brand generation.</p>
+        </div>
+        <a href="/" class="w-full bg-white text-black py-3 rounded-xl text-sm mb-8 hover:bg-gray-200 transition-colors flex items-center justify-center gap-2">
+          Start Building <iconify-icon icon="solar:arrow-right-linear" class="text-base"></iconify-icon>
+        </a>
+        <div class="space-y-4 mt-auto">
+          <p class="text-xs text-gray-500 uppercase tracking-wider">Includes</p>
+          <ul class="space-y-3">
+            <li class="flex items-center gap-3 text-sm text-gray-300">
+              <iconify-icon icon="solar:check-circle-linear" class="text-gray-500"></iconify-icon> 5 idea generations
+            </li>
+            <li class="flex items-center gap-3 text-sm text-gray-300">
+              <iconify-icon icon="solar:check-circle-linear" class="text-gray-500"></iconify-icon> Brand names & domains
+            </li>
+            <li class="flex items-center gap-3 text-sm text-gray-300">
+              <iconify-icon icon="solar:check-circle-linear" class="text-gray-500"></iconify-icon> Core value proposition
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Pro (Highlighted) -->
+      <div class="group relative flex flex-col p-8 bg-white/[0.08] border border-white/20 rounded-3xl overflow-hidden shadow-2xl">
+        <div class="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-emerald-500/20 to-transparent pointer-events-none"></div>
+        <div class="mb-6 flex items-start justify-between relative z-10">
+          <div class="h-10 w-10 rounded-xl bg-emerald-400/20 flex items-center justify-center border border-emerald-400/30">
+            <iconify-icon icon="solar:layers-linear" class="text-emerald-400 text-xl"></iconify-icon>
+          </div>
+          <span class="bg-emerald-400 text-black text-xs px-2 py-1 rounded uppercase tracking-wider">Most Popular</span>
+        </div>
+        <div class="mb-6 relative z-10">
+          <div class="flex items-baseline gap-1">
+            <span class="text-3xl text-white font-manrope font-medium tracking-tighter">$29</span>
+            <span class="text-sm text-gray-500">/mo</span>
+          </div>
+          <h3 class="text-lg text-white mt-4">Pro</h3>
+          <p class="text-sm text-gray-400 mt-2 leading-relaxed">Advanced market deep-dives and full asset exports.</p>
+        </div>
+        <button class="relative z-10 w-full bg-[#10b981] text-white py-3 rounded-xl text-sm mb-8 hover:bg-[#059669] transition-colors flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(16,185,129,0.3)]">
+          Upgrade Now <iconify-icon icon="solar:arrow-right-linear" class="text-base"></iconify-icon>
+        </button>
+        <div class="space-y-4 mt-auto relative z-10">
+          <p class="text-xs text-gray-500 uppercase tracking-wider">Everything in Spark plus</p>
+          <ul class="space-y-3">
+            <li class="flex items-center gap-3 text-sm text-white">
+              <iconify-icon icon="solar:check-circle-linear" class="text-emerald-400"></iconify-icon> Unlimited generations
+            </li>
+            <li class="flex items-center gap-3 text-sm text-white">
+              <iconify-icon icon="solar:check-circle-linear" class="text-emerald-400"></iconify-icon> Pitch deck exports
+            </li>
+            <li class="flex items-center gap-3 text-sm text-white">
+              <iconify-icon icon="solar:check-circle-linear" class="text-emerald-400"></iconify-icon> Detailed competitor analysis
+            </li>
+            <li class="flex items-center gap-3 text-sm text-white">
+              <iconify-icon icon="solar:check-circle-linear" class="text-emerald-400"></iconify-icon> PDF blueprint export
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Agency -->
+      <div class="group relative flex flex-col p-8 bg-white/[0.03] border border-white/10 rounded-3xl hover:bg-white/[0.05] transition-colors duration-300">
+        <div class="mb-6 flex items-start justify-between">
+          <div class="h-10 w-10 rounded-xl bg-white/10 flex items-center justify-center border border-white/10">
+            <iconify-icon icon="solar:diamond-linear" class="text-white text-xl"></iconify-icon>
+          </div>
+        </div>
+        <div class="mb-6">
+          <div class="flex items-baseline gap-1">
+            <span class="text-3xl text-white font-manrope font-medium tracking-tighter">$99</span>
+            <span class="text-sm text-gray-500">/mo</span>
+          </div>
+          <h3 class="text-lg text-white mt-4">Agency</h3>
+          <p class="text-sm text-gray-400 mt-2 leading-relaxed">For venture studios and creative agencies.</p>
+        </div>
+        <button class="w-full bg-white text-black py-3 rounded-xl text-sm mb-8 hover:bg-gray-200 transition-colors flex items-center justify-center gap-2">
+          Start Free Trial <iconify-icon icon="solar:arrow-right-linear" class="text-base"></iconify-icon>
+        </button>
+        <div class="space-y-4 mt-auto">
+          <p class="text-xs text-gray-500 uppercase tracking-wider">Features</p>
+          <ul class="space-y-3">
+            <li class="flex items-center gap-3 text-sm text-gray-300">
+              <iconify-icon icon="solar:check-circle-linear" class="text-gray-500"></iconify-icon> API access
+            </li>
+            <li class="flex items-center gap-3 text-sm text-gray-300">
+              <iconify-icon icon="solar:check-circle-linear" class="text-gray-500"></iconify-icon> White-label reports
+            </li>
+            <li class="flex items-center gap-3 text-sm text-gray-300">
+              <iconify-icon icon="solar:check-circle-linear" class="text-gray-500"></iconify-icon> Dedicated support
+            </li>
+            <li class="flex items-center gap-3 text-sm text-gray-300">
+              <iconify-icon icon="solar:check-circle-linear" class="text-gray-500"></iconify-icon> Domain registration service
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>
