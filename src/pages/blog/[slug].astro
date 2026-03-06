@@ -1,0 +1,87 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { createReader } from '@keystatic/core/reader';
+import keystaticConfig from '../../../keystatic.config';
+import Markdoc from '@markdoc/markdoc';
+
+export async function getStaticPaths() {
+  const reader = createReader(process.cwd(), keystaticConfig);
+  const posts = await reader.collections.blog.all();
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { entry } = post;
+
+// Render markdoc content
+const content = await entry.content();
+const rendered = Markdoc.renderers.html(content.node);
+
+function formatDate(dateStr: string | null) {
+  if (!dateStr) return '';
+  return new Date(dateStr).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+}
+---
+<BaseLayout title={`${entry.title} | InstantCompany Blog`} description={entry.excerpt || ''}>
+  <section class="relative w-full rounded-[2.5rem] overflow-hidden bg-[#0f1115] text-white p-8 lg:p-12 shadow-2xl shadow-gray-200">
+    <div class="absolute inset-0 z-0">
+      <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=2560&auto=format&fit=crop" alt="Writing workspace" class="opacity-20 mix-blend-overlay w-full h-full object-cover" />
+      <div class="bg-gradient-to-t from-[#0f1115] via-transparent to-[#0f1115]/80 absolute inset-0"></div>
+    </div>
+    <Header />
+    <div class="relative z-10 mt-16 max-w-3xl pb-8">
+      <!-- Breadcrumbs -->
+      <nav class="flex items-center gap-2 text-sm text-gray-400 mb-6">
+        <a href="/blog" class="hover:text-emerald-400 transition-colors">Blog</a>
+        <iconify-icon icon="solar:arrow-right-linear" class="text-xs"></iconify-icon>
+        <span class="text-gray-500 truncate max-w-xs">{entry.title}</span>
+      </nav>
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-xs px-2.5 py-1 rounded-full bg-emerald-400/10 text-emerald-400 border border-emerald-400/30">
+          {entry.category}
+        </span>
+        {entry.publishDate && (
+          <span class="text-xs text-gray-400">{formatDate(entry.publishDate)}</span>
+        )}
+      </div>
+      <h1 class="text-3xl md:text-5xl text-white mb-4 font-manrope font-medium tracking-tighter">{entry.title}</h1>
+      {entry.author && (
+        <div class="flex items-center gap-3 mt-4">
+          <div class="w-8 h-8 rounded-full bg-emerald-400/10 flex items-center justify-center">
+            <iconify-icon icon="solar:pen-new-square-linear" class="text-emerald-400 text-sm"></iconify-icon>
+          </div>
+          <span class="text-sm text-gray-300">{entry.author}</span>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <article class="py-16 max-w-3xl mx-auto px-4">
+    <div class="prose prose-lg prose-gray max-w-none
+      prose-headings:font-manrope prose-headings:font-medium prose-headings:tracking-tighter
+      prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4
+      prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3
+      prose-p:leading-relaxed prose-p:text-gray-600
+      prose-a:text-emerald-600 prose-a:no-underline hover:prose-a:text-emerald-500
+      prose-strong:text-gray-900
+      prose-ul:text-gray-600 prose-ol:text-gray-600
+      prose-li:leading-relaxed
+      prose-blockquote:border-emerald-500 prose-blockquote:text-gray-500 prose-blockquote:italic"
+      set:html={rendered}
+    />
+
+    <div class="mt-16 pt-8 border-t border-gray-100">
+      <a href="/blog" class="inline-flex items-center gap-2 text-sm text-emerald-600 hover:text-emerald-500 transition-colors font-medium">
+        <iconify-icon icon="solar:arrow-left-linear" class="text-lg"></iconify-icon>
+        Back to Blog
+      </a>
+    </div>
+  </article>
+
+  <Footer />
+</BaseLayout>

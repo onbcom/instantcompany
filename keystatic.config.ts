@@ -5,6 +5,20 @@ export default config({
     kind: 'local',
   },
   collections: {
+    blog: collection({
+      label: 'Blog Posts',
+      slugField: 'title',
+      path: 'src/content/blog/*',
+      format: { contentField: 'content', data: 'yaml' },
+      schema: {
+        title: fields.slug({ name: { label: 'Title' } }),
+        category: fields.text({ label: 'Category' }),
+        publishDate: fields.date({ label: 'Publish Date' }),
+        author: fields.text({ label: 'Author' }),
+        excerpt: fields.text({ label: 'Excerpt', multiline: true }),
+        content: fields.markdoc({ label: 'Content' }),
+      },
+    }),
     stories: collection({
       label: 'Success Stories',
       slugField: 'title',

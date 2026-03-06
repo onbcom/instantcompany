@@ -1,0 +1,107 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { createReader } from '@keystatic/core/reader';
+import keystaticConfig from '../../../keystatic.config';
+
+const reader = createReader(process.cwd(), keystaticConfig);
+const posts = await reader.collections.blog.all();
+
+// Sort by publish date (newest first)
+const sortedPosts = posts.sort((a, b) => {
+  const dateA = a.entry.publishDate ? new Date(a.entry.publishDate).getTime() : 0;
+  const dateB = b.entry.publishDate ? new Date(b.entry.publishDate).getTime() : 0;
+  return dateB - dateA;
+});
+
+// Fallback sample posts if none exist in CMS yet
+const displayPosts = sortedPosts.length > 0 ? sortedPosts : [
+  {
+    slug: 'why-ai-business-tools-are-changing-entrepreneurship',
+    entry: {
+      title: 'Why AI Business Tools Are Changing Entrepreneurship',
+      category: 'Industry Trends',
+      publishDate: '2026-03-01',
+      author: 'InstantCompany Team',
+      excerpt: 'The barrier to launching a business has never been lower. AI tools are compressing weeks of strategy work into minutes — and it\'s changing who gets to be a founder.',
+    }
+  },
+  {
+    slug: '5-mistakes-first-time-founders-make',
+    entry: {
+      title: '5 Mistakes First-Time Founders Make (And How to Avoid Them)',
+      category: 'Founder Advice',
+      publishDate: '2026-02-20',
+      author: 'InstantCompany Team',
+      excerpt: 'From underpricing to skipping positioning work, these common pitfalls derail new businesses before they even get off the ground.',
+    }
+  },
+  {
+    slug: 'how-to-validate-your-business-idea-in-2026',
+    entry: {
+      title: 'How to Validate Your Business Idea in 2026',
+      category: 'Getting Started',
+      publishDate: '2026-02-10',
+      author: 'InstantCompany Team',
+      excerpt: 'Validation doesn\'t have to take months. Here\'s a modern framework for testing your business concept before you invest serious time or money.',
+    }
+  }
+];
+
+function formatDate(dateStr: string | null) {
+  if (!dateStr) return '';
+  return new Date(dateStr).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+}
+---
+<BaseLayout title="Blog | InstantCompany.com" description="Insights, guides, and founder advice from the InstantCompany team.">
+  <section class="relative w-full rounded-[2.5rem] overflow-hidden bg-[#0f1115] text-white p-8 lg:p-12 shadow-2xl shadow-gray-200">
+    <div class="absolute inset-0 z-0">
+      <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=2560&auto=format&fit=crop" alt="Writing workspace" class="opacity-20 mix-blend-overlay w-full h-full object-cover" />
+      <div class="bg-gradient-to-t from-[#0f1115] via-transparent to-[#0f1115]/80 absolute inset-0"></div>
+    </div>
+    <Header />
+    <div class="relative z-10 mt-16 max-w-3xl pb-8">
+      <h1 class="text-4xl md:text-6xl text-white mb-4 font-manrope font-medium tracking-tighter">Blog</h1>
+      <p class="text-lg text-gray-300 leading-relaxed">Insights, strategies, and founder stories to help you build faster and smarter.</p>
+    </div>
+  </section>
+
+  <section class="py-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {displayPosts.map((post, i) => (
+        <a href={`/blog/${post.slug}`} class={`group rounded-3xl p-8 flex flex-col justify-between min-h-[340px] transition-all hover:scale-[1.01] hover:shadow-lg ${i % 2 === 0 ? 'bg-white border border-gray-100' : 'bg-[#0f1115] text-white border border-white/5'}`}>
+          <div>
+            <div class="flex items-center gap-3 mb-4">
+              <span class={`text-xs px-2.5 py-1 rounded-full ${i % 2 === 0 ? 'bg-emerald-50 text-emerald-600 border border-emerald-200' : 'bg-emerald-400/10 text-emerald-400 border border-emerald-400/30'}`}>
+                {post.entry.category}
+              </span>
+              {post.entry.publishDate && (
+                <span class={`text-xs ${i % 2 === 0 ? 'text-gray-400' : 'text-gray-500'}`}>
+                  {formatDate(post.entry.publishDate)}
+                </span>
+              )}
+            </div>
+            <h3 class={`text-xl mb-3 font-manrope font-medium tracking-tighter group-hover:text-emerald-500 transition-colors ${i % 2 === 0 ? 'text-gray-900' : 'text-white'}`}>
+              {post.entry.title}
+            </h3>
+            <p class={`text-sm leading-relaxed ${i % 2 === 0 ? 'text-gray-500' : 'text-gray-400'}`}>
+              {post.entry.excerpt}
+            </p>
+          </div>
+          <div class={`flex items-center gap-3 pt-6 border-t mt-6 ${i % 2 === 0 ? 'border-gray-100' : 'border-white/10'}`}>
+            <div class={`w-8 h-8 rounded-full flex items-center justify-center ${i % 2 === 0 ? 'bg-emerald-50' : 'bg-emerald-400/10'}`}>
+              <iconify-icon icon="solar:pen-new-square-linear" class="text-emerald-500 text-sm"></iconify-icon>
+            </div>
+            <div>
+              <p class={`text-sm ${i % 2 === 0 ? 'text-gray-900' : 'text-white'}`}>{post.entry.author}</p>
+            </div>
+            <iconify-icon icon="solar:arrow-right-linear" class={`ml-auto text-lg group-hover:translate-x-1 transition-transform ${i % 2 === 0 ? 'text-gray-300' : 'text-gray-600'}`}></iconify-icon>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>
