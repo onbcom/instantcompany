@@ -20,7 +20,8 @@ const { entry } = post;
 
 // Render markdoc content
 const content = await entry.content();
-const rendered = Markdoc.renderers.html(content.node);
+const transformed = Markdoc.transform(content.node);
+const rendered = Markdoc.renderers.html(transformed);
 
 function formatDate(dateStr: string | null) {
   if (!dateStr) return '';
