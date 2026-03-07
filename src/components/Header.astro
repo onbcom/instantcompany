@@ -1,11 +1,11 @@
 ---
 const currentPath = Astro.url.pathname;
 ---
-<div class="relative z-10 w-full flex justify-center">
+<div class="relative z-10 w-full flex items-center justify-between">
+  <a href="/" class="inline-flex items-center justify-center h-[32px] px-3 font-manrope font-semibold text-white text-base tracking-tight">
+    Instant<span class="text-emerald-500">Company</span>
+  </a>
   <nav class="bg-white/5 backdrop-blur-md border border-white/10 rounded-full py-2 px-3 flex items-center gap-6 text-sm">
-    <a href="/" class="inline-flex items-center justify-center h-[32px] px-3 font-manrope font-semibold text-white text-base tracking-tight">
-      Instant<span class="text-emerald-500">Company</span>
-    </a>
     <a href="/generate" class="text-gray-300 hover:text-white transition-colors hidden md:block">Generate</a>
     <a href="/how-it-works" class="text-gray-300 hover:text-white transition-colors hidden md:block">How it Works</a>
     <a href="/pricing" class="text-gray-300 hover:text-white transition-colors hidden md:block">Pricing</a>
